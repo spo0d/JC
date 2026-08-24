@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Script
 comment1.params=game\ s
-comment1.target=Script(Game,\ java.lang.String)
+comment1.target=Script(Engine.Game,\ java.lang.String)
 comment2.params=file
 comment2.target=void\ scriptUpdate(java.lang.String)
 comment3.params=

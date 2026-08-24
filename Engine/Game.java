@@ -38,6 +38,8 @@ public class Game extends JPanel implements Runnable{
     public int tindex;
     public String tname;
     public String ttext;
+    public int tframe;
+    public int tdummy;
     public final Font tfont = new Font("Arial", Font.PLAIN, 24);
     public Game(){
         scriaddy="assetsfile/scripts/menu.txt";
@@ -108,8 +110,9 @@ public class Game extends JPanel implements Runnable{
         g2.translate(offsetx-(int)(camera.camerax*scalex),offsety);
         g2.scale(scalex,scaley);
         currentWorld.draw(g2);
-        if(dialogueactive){
-            textLoader(g2, tname, ttext, tindex, tx, ty, twidth, tfont);
+        if(dialogueactive&&(tframe<tdummy)){
+            textLoader(g2, tname, ttext.substring((ttext.length()*tframe)/tdummy), tindex, tx, ty, twidth, tfont);
+            tframe++;
         }
     }
     public void update(){

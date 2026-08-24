@@ -32,8 +32,8 @@ public class Script{
     public void run(){
             try{    
                     String s[] = br.readLine().trim().split("\\|");     
-                    if(s[0]=="Say"&&s.length==6)say(s);
-                    if(s[0]=="Move"&&s.length==5){
+                    if(s[0].equals("Say")&&s.length==7)say(s);
+                    if(s[0].equals("Move")&&s.length==5){
                         for(Entity e : game.currentWorld.entities){
                             if(e.name==s[1])e.moveTo(Integer.valueOf(s[2]), Boolean.valueOf(s[3]), Integer.valueOf(s[4])) ;
                         }
@@ -45,13 +45,14 @@ public class Script{
             }
         }
         public void say(String s[]){
-            String dummy[] = new String[5];
             try{
-                game.tx=Integer.valueOf(dummy[1]);
-                game.ty=Integer.valueOf(dummy[2]);
-                game.twidth=Integer.valueOf(dummy[3]);
-                game.tname=dummy[4];
-                game.ttext=dummy[5];
+                game.tx=Integer.valueOf(s[1]);
+                game.ty=Integer.valueOf(s[2]);
+                game.twidth=Integer.valueOf(s[3]);
+                game.tname=s[4];
+                game.ttext=s[5];
+                game.tdummy=Integer.valueOf(s[6]);
+                game.tframe=0;
                 game.dialogueactive=true;
             }
             catch(Exception e){
