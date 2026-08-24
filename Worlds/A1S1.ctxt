@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=A1S1
+comment1.params=mousedummy\ keyboarddummy\ gdummy\ player
+comment1.target=A1S1(Engine.Mouse,\ Engine.Input,\ Engine.Game,\ Entities.Player)
+comment2.params=g2
+comment2.target=void\ draw(java.awt.Graphics2D)
+comment3.params=
+comment3.target=void\ update()
+numComments=4
