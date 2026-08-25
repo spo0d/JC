@@ -5,7 +5,7 @@ import Assets.AMenu;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
+import Scripts.*;
 import Entities.*;
 public class Menu implements World{
     int posx;
@@ -17,11 +17,14 @@ public class Menu implements World{
     Mouse mouse;
     public int count;
     public boolean check;
+    public ArrayList<Entity> entities;
+    
     public Menu(Mouse mouse,Input in,Game game, Player player){
         this.game = game;
         this.mouse = mouse;
         this.in = in;
         this.player = player;
+        entities = new ArrayList<>();
         amenu = new AMenu();
     }
     @Override
@@ -46,5 +49,9 @@ public class Menu implements World{
     }
     @Override
     public void update(){
+    }
+    @Override
+    public ArrayList<Entity> getEntities(){
+        return this.entities;
     }
 }

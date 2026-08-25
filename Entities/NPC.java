@@ -5,7 +5,6 @@ import Assets.AA1S1;
 
 import java.awt.image.BufferedImage;
 public class NPC extends Entity{
-    Input input;
     public NPC(String name, int x,int y, BufferedImage spritestand, BufferedImage spritemove[] ){
         this.name=name;
         this.x=x;
@@ -18,10 +17,24 @@ public class NPC extends Entity{
     }
     @Override
     public void update(){
-        if(this.npcmove){
-            
-            if(xy)x+=(int)this.speed;
-            else  y+=(int)this.speed;
-        }
+        if(npcmove){
+      if(xy){
+          x += speed;
+          if((speed > 0 && x >= target) || (speed < 0 && x <= target)){
+              x = target;      // snap exactly
+              npcmove = false;
+          }
+      } else {
+          y += speed;
+          if((speed > 0 && y >= target) || (speed < 0 && y <= target)){
+              y = target;
+              npcmove = false;
+          }
+       }
+     }
+    }
+    public boolean touchRange(Player player){
+        if(Math.abs(player.x-this.x)<=player.sizex  && Math.abs(player.y-this.y)<=player.sizey)return true;
+        return false;
     }
 }

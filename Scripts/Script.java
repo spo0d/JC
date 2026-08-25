@@ -30,39 +30,36 @@ public class Script{
             }
     }
     public void run(){
+        while(!game.scripting){
             try{    
-                    String s[] = br.readLine().trim().split("\\|");     
-                    if(s[0].equals("Say")&&s.length==7)say(s);
-                    if(s[0].equals("Move")&&s.length==5){
-                        for(Entity e : game.currentWorld.entities){
-                            if(e.name==s[1])e.moveTo(Integer.valueOf(s[2]), Boolean.valueOf(s[3]), Integer.valueOf(s[4])) ;
-                        }
+                    String line =  br.readLine();
+                    if(line==(null)){
+                        game.scripting=true;
                     }
-                
-            }
+                    line=line.trim();
+                    if(line.isEmpty()){
+                    }
+                    String s[] =line.split("\\|"); 
+                    
+                    switch(s[0]){
+                        case "start": 
+                            game.scripting=false;
+                            break;
+                        case "stop": 
+                            game.scripting=true;
+                            break;
+                        case "Move":
+                            if(s.length==5){
+                           for(Entity e : game.currentWorld.getEntities()){
+                             if(e.name.equals(s[1]))e.moveTo(Integer.valueOf(s[2]), (s[3].equals("x")?(true):(false)), Integer.valueOf(s[4])) ;
+                           }
+                         }
+                         break;
+                    }
+                }
             catch(Exception e){
                 e.printStackTrace();
             }
         }
-        public void say(String s[]){
-            try{
-                game.tx=Integer.valueOf(s[1]);
-                game.ty=Integer.valueOf(s[2]);
-                game.twidth=Integer.valueOf(s[3]);
-                game.tname=s[4];
-                game.ttext=s[5];
-                game.tdummy=Integer.valueOf(s[6]);
-                game.tframe=0;
-                game.dialogueactive=true;
-                game.scripting=true;
-            }
-            catch(Exception e){
-                System.out.println(s + e.getMessage());
-                e.printStackTrace();
-            }
-                
-    }
-    public void move(){
-        
-    }
+        }
 }

@@ -8,13 +8,14 @@ public class Player extends Entity{
     Input input;
     AA1S1 aa1s1;
     int i;
+    public int stamina;
     public Player(Input inputdummy){
         input=inputdummy;
         speed=10;
         jumpspeed=15;
         gravity=2;
         this.x=100;
-        this.y=550;
+        this.y=475;
         sizex=100;
         sizey=100;
         aa1s1 = new AA1S1();
@@ -23,7 +24,14 @@ public class Player extends Entity{
     }
     @Override
     public void update(){
-        
+        if(input.move[6]&&stamina>0){
+            speed=25;
+            stamina--;
+        }
+        else {
+            if(!input.move[6])stamina=20;
+            speed=10;
+        }
         sprite=spritestand;
         if(input.move[1]){
             x-=speed;

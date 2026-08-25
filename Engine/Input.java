@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Input implements KeyListener
 {   
     public char input;
-    public boolean move[] = new boolean[5];
+    public boolean move[] = new boolean[7];
     @Override
     public void keyPressed(KeyEvent e){
         input = e.getKeyChar();
@@ -25,6 +25,12 @@ public class Input implements KeyListener
                 break;
             case KeyEvent.VK_ENTER:
                 move[4]=true;
+                break;
+            case KeyEvent.VK_E:
+                move[5]=true;
+                break;
+            case KeyEvent.VK_CONTROL:
+                move[6]=true;
                 break;
         }
     }
@@ -49,6 +55,12 @@ public class Input implements KeyListener
                 break;
             case KeyEvent.VK_ENTER:
                 move[4]=false;
+                break;
+            case KeyEvent.VK_E:
+                move[5]=false;
+                break;
+            case KeyEvent.VK_CONTROL:
+                move[6]=false;
                 break;
         }
         input='\0';

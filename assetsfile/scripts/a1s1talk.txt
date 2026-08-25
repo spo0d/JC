@@ -1,0 +1,13 @@
+hello:150:gayyyy
+|
+FLAVIUS:150:Hence! home, you idle creatures get you home
+|
+MURELLUS:150:Is this a holiday? what! know you not
+|
+FLAVIUS:150:Being mechanical, you ought not walk
+|
+MURELLUS:150:Upon a labouring day without the sign
+|
+COBBLER:150:Truly, sir, in respect of a fine workman, I am but, as you would say, a cobbler
+|
+FLAVIUS:150:But what trade art thou? answer me directly

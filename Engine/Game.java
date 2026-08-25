@@ -10,13 +10,14 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.*;
 import Scripts.*;
+import java.util.ArrayList;
+
 public class Game extends JPanel implements Runnable{
     public Input keyboard;
     Camera camera;
     public Mouse mouse;
     public Player player;
     public Worlds.World currentWorld;
-    public Scripts.Script script;
     public  int widthreal;
     public  int heightreal;
     public  int height;
@@ -28,21 +29,18 @@ public class Game extends JPanel implements Runnable{
     final public  int widthx;
     public int offsetx;
     public int offsety;
+    Font font;
     
+    public Scripts.Script script;
     public String scriaddy;
     public boolean scripting;
-    public boolean dialogueactive;
-    public int tx;
-    public int ty;
-    public int twidth;
     public int tindex;
-    public String tname;
-    public String ttext;
-    public int tframe;
-    public int tdummy;
-    public final Font tfont = new Font("Arial", Font.PLAIN, 24);
+    public boolean interactPressed;
+    public ArrayList<Entities.Dialogue> dialogues = new ArrayList<>();
     public Game(){
         scriaddy="assetsfile/scripts/menu.txt";
+        font=new Font("Arial", Font.PLAIN, 35);;
+        script = new Script(this, scriaddy);
         heighty=720;
         widthx=1280;
         world=0;
@@ -56,11 +54,9 @@ public class Game extends JPanel implements Runnable{
         setDoubleBuffered(true);
         setFocusable(true);
         addKeyListener(keyboard);
-        tindex=0;
         player = new Player(keyboard);
         camera=new Camera(player,this);
         currentWorld = new Worlds.Menu(mouse,keyboard, this,player);
-        script = new Script(this, scriaddy);
         
         
         Thread gameThread = new Thread(this);
@@ -93,9 +89,9 @@ public class Game extends JPanel implements Runnable{
         
         
         update();
-        if(!scripting)script.run();
+        script.run();
         repaint();
-
+        
         try{
             Thread.sleep(16);
         }
@@ -107,80 +103,83 @@ public class Game extends JPanel implements Runnable{
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        
+        java.awt.geom.AffineTransform oldTransform = g2.getTransform();
+        
         g2.translate(offsetx-(int)(camera.camerax*scalex),offsety);
         g2.scale(scalex,scaley);
         currentWorld.draw(g2);
-        if(dialogueactive){
-            if(tframe<tdummy){
-             textLoader(g2, tname, ttext.substring(0,(ttext.length()*tframe)/tdummy), tx, ty, twidth, tfont);
-             tframe+=16;}
-            else{
-                dialogueactive=false;
-                scripting=false;
-            }
+        
+        g2.setTransform(oldTransform);
+        g2.translate(offsetx, offsety); 
+        g2.scale(scalex, scaley);
+        for(Entities.Dialogue d : dialogues){
+         if(d.active) textLoader(g2, d, font);
         }
     }
+    boolean prevEnter;  
     public void update(){
+        interactPressed = keyboard.move[4] && !prevEnter; // true only the exact frame Enter goes down
+        prevEnter = keyboard.move[4];
         currentWorld.update();
         camera.update();
+        for(Dialogue d: dialogues){
+            if(d.active) d.update();
+        }
     }
-        public void textLoader(Graphics2D g2, String name, String s,int x, int y, int width, Font font) {
-            g2.setFont(font);
-            FontMetrics fm = g2.getFontMetrics();
-            
-            g2.drawString(name+": ",x,y);
-            
-            String text = s;
+    public void textLoader(Graphics2D g2, Entities.Dialogue d, Font font) {
         
-            String[] words = text.split(" ");
-            String line = "";
+        g2.setFont(font);
+        g2.setColor(Color.BLACK);
+        FontMetrics fm = g2.getFontMetrics();
+        int lineHeight = fm.getHeight();
         
-            int lines = 0;
+        // Draw the character name relative to the top-left boundary
+        g2.drawString(d.name + ": ", d.x, d.y + fm.getAscent());
         
-            // First pass: find how many lines
-            for (String word : words) {
-                String test = line.isEmpty() ? word : line + " " + word;
-        
-                if (fm.stringWidth(test) > width) {
-                    lines++;
-                    line = word;
-                } else {
-                    line = test;
-                }
+        // Step 1: Pre-calculate word wrapping over the FULL text
+        // This stops words from jumping around while typing out
+        String[] words = d.text.split(" ");
+        ArrayList<String> lines = new ArrayList<>();
+        String currentLine = "";
+    
+        for (String word : words) {
+            String testLine = currentLine.isEmpty() ? word : currentLine + " " + word;
+            if (fm.stringWidth(testLine) > width) {
+                lines.add(currentLine);
+                currentLine = word;
+            } else {
+                currentLine = testLine;
             }
+        }
+        if (!currentLine.isEmpty()) {
+            lines.add(currentLine);
+        }
+    
+        // Step 2: Track characters for the typewriter animation
+        String visible = d.visibleText();
+        int allowed = visible.length(),processed=0;
         
-            if (!line.isEmpty())
-                lines++;
-        
-            int lineHeight = fm.getHeight();
-            int totalHeight = lines * lineHeight;
-        
-            // y = center of entire text block
-            int drawY = y+fm.getHeight()+10 ;
-        
-            // Second pass: actually draw
-            line = "";
-        
-            for (String word : words) {
-                String test = line.isEmpty() ? word : line + " " + word;
-        
-                if (fm.stringWidth(test) > width) {
-                    int lineWidth = fm.stringWidth(line);
-                    int drawX = x - lineWidth / 2;
-        
-                    g2.drawString(line, x, drawY);
-        
-                    drawY += lineHeight;
-                    line = word;
-                } else {
-                    line = test;
-                }
-            }  
-            if (!line.isEmpty()) {
-                int lineWidth = fm.stringWidth(line);
-                int drawX = x - lineWidth / 2;
-        
-                g2.drawString(line, x, drawY);
+        // Position first line of text right below the speaker's name
+        int drawY = d.y + lineHeight + 40; 
+    
+        for (String line : lines) {
+            if (processed >= allowed) break;
+    
+            // Slice line fragment based on typewriter progress
+            String lineToDraw = line;
+            if (processed + line.length() > allowed) {
+                lineToDraw = line.substring(0, allowed - processed);
             }
+            processed += line.length() + 1; // +1 accounts for the split space character
+    
+            // FIX: Draw strictly from the left bound 'x' instead of centering it!
+            g2.drawString(lineToDraw, d.x, drawY);
+            
+            // Push the next line down
+            drawY += lineHeight; 
+        }
     }
+
+
 }
