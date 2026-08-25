@@ -54,6 +54,7 @@ public class Script{
                 game.tdummy=Integer.valueOf(s[6]);
                 game.tframe=0;
                 game.dialogueactive=true;
+                game.scripting=true;
             }
             catch(Exception e){
                 System.out.println(s + e.getMessage());

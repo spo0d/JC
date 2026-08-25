@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Camera
-comment1.params=player\ game
-comment1.target=Camera(Entities.Player,\ Game)
-comment2.params=
-comment2.target=void\ update()
-numComments=3

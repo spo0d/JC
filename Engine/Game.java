@@ -30,7 +30,7 @@ public class Game extends JPanel implements Runnable{
     public int offsety;
     
     public String scriaddy;
-    
+    public boolean scripting;
     public boolean dialogueactive;
     public int tx;
     public int ty;
@@ -93,7 +93,7 @@ public class Game extends JPanel implements Runnable{
         
         
         update();
-        script.run();
+        if(!scripting)script.run();
         repaint();
 
         try{
@@ -110,23 +110,27 @@ public class Game extends JPanel implements Runnable{
         g2.translate(offsetx-(int)(camera.camerax*scalex),offsety);
         g2.scale(scalex,scaley);
         currentWorld.draw(g2);
-        if(dialogueactive&&(tframe<tdummy)){
-            textLoader(g2, tname, ttext.substring((ttext.length()*tframe)/tdummy), tindex, tx, ty, twidth, tfont);
-            tframe++;
+        if(dialogueactive){
+            if(tframe<tdummy){
+             textLoader(g2, tname, ttext.substring(0,(ttext.length()*tframe)/tdummy), tx, ty, twidth, tfont);
+             tframe+=16;}
+            else{
+                dialogueactive=false;
+                scripting=false;
+            }
         }
     }
     public void update(){
         currentWorld.update();
         camera.update();
     }
-        public void textLoader(Graphics2D g2, String name, String s, int index,int x, int y, int width, Font font) {
-        if(index<s.length()){
+        public void textLoader(Graphics2D g2, String name, String s,int x, int y, int width, Font font) {
             g2.setFont(font);
             FontMetrics fm = g2.getFontMetrics();
             
             g2.drawString(name+": ",x,y);
             
-            String text = s.substring(0, Math.min(index, s.length()));
+            String text = s;
         
             String[] words = text.split(" ");
             String line = "";
@@ -178,10 +182,5 @@ public class Game extends JPanel implements Runnable{
         
                 g2.drawString(line, x, drawY);
             }
-        }
-        else{
-            index=0;
-            dialogueactive=false;
-        }
     }
 }

@@ -49,7 +49,7 @@ public class A1S1 implements World{
            }
           if(index<intro.length())index++;
           g2.setColor(Color.BLACK);
-          g.textLoader(g2,"bigga",intro,index,50,250,g.widthx-100, font);
+          g.textLoader(g2,"bigga",intro,50,250,g.widthx-100, font);
          }
         
         
