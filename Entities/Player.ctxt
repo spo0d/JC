@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Player
-comment1.params=inputdummy
-comment1.target=Player(Engine.Input)
+comment1.params=input\ mouse
+comment1.target=Player(Engine.Input,\ Engine.Mouse)
 comment2.params=
 comment2.target=void\ update()
 numComments=3

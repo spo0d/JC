@@ -31,7 +31,7 @@ public class Entity {
     public BufferedImage spritemove[] = new BufferedImage[2];
     public BufferedImage spritesprint[] = new BufferedImage[2];
     public BufferedImage spritejump;
-    //public BufferedImage spriteattack[] = new BufferedImage[2];
+    public BufferedImage spriteattack[] = new BufferedImage[2];
     
     protected boolean walk=false;
     public void draw(Graphics2D g2) {

@@ -31,6 +31,9 @@ public class Game extends JPanel implements Runnable{
     public int offsety;
     Font font;
     
+    //world check menu
+    public boolean menuCheck;
+    
     public Scripts.Script script;
     public String scriaddy;
     public boolean scripting;
@@ -54,7 +57,7 @@ public class Game extends JPanel implements Runnable{
         setDoubleBuffered(true);
         setFocusable(true);
         addKeyListener(keyboard);
-        player = new Player(keyboard);
+        player = new Player(keyboard,mouse);
         camera=new Camera(player,this);
         currentWorld = new Worlds.Menu(mouse,keyboard, this,player);
         
@@ -109,6 +112,11 @@ public class Game extends JPanel implements Runnable{
         g2.translate(offsetx-(int)(camera.camerax*scalex),offsety);
         g2.scale(scalex,scaley);
         currentWorld.draw(g2);
+        if(menuCheck){
+            g2.setColor(Color.WHITE);
+            g2.fillRect(0,590,widthx,135);
+        }
+        
         
         g2.setTransform(oldTransform);
         g2.translate(offsetx, offsety); 

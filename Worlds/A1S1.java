@@ -42,12 +42,11 @@ public class A1S1 implements World{
         aa1s1 = new AA1S1();
         this.player = player;
         entities = new ArrayList<>();
-        entities.add(new NPC("mukesh", 550,475,aa1s1.stand,aa1s1.move));
-        entities.add(new NPC("rakesh", 100,100,aa1s1.stand,aa1s1.move));
-        entities.add(new NPC("dinesh", 100,100,aa1s1.stand,aa1s1.move));
-        System.out.println(g.height-475+" " + g.height);
+        entities.add(new NPC("mukesh", 550,475,aa1s1.spritestand,aa1s1.spritemove));
+        entities.add(new NPC("rakesh", 100,100,aa1s1.spritestand,aa1s1.spritemove));
+        entities.add(new NPC("dinesh", 100,100,aa1s1.spritestand,aa1s1.spritemove));
         intro = "FLAVIUS and MURELLUS enter on one side of the stage. A CARPENTER, a COBBLER, and some other commoners enter from the other end of the stage.";
-        introDialogue = new Dialogue(50, 250, g.widthx-100, "bigga", intro, 150);
+        introDialogue = new Dialogue(50, 250, g.widthx-100, "bigga", intro);
         count = 0;
         g.dialogues.add(introDialogue);
         start=false;
@@ -55,7 +54,7 @@ public class A1S1 implements World{
          for(String s : aa1s1.DialogueArr.split("\\|")){
             String cleanLine =  s.trim();
             if(!cleanLine.isEmpty()){
-                sceneLines.add(new Dialogue(50,250, g.width-100, cleanLine.split(":")[0], cleanLine.split(":")[2], Integer.valueOf(cleanLine.split(":")[1]) ));
+                sceneLines.add(new Dialogue(25,600, g.width-100, cleanLine.split(":")[0], cleanLine.split(":")[2]));
             }
         }
     }
@@ -88,7 +87,7 @@ public class A1S1 implements World{
          else{
          }
         if(elock){
-            g2.drawImage(aa1s1.textwhitebg,0, 560,g.widthx,180, null);
+            
         }
         
         

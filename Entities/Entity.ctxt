@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Entity
+comment1.params=g2
+comment1.target=void\ draw(java.awt.Graphics2D)
+comment2.params=
+comment2.target=void\ update()
+comment3.params=target\ xy\ timemillis
+comment3.target=void\ moveTo(int,\ boolean,\ int)
+numComments=4

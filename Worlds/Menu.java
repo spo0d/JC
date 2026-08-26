@@ -40,6 +40,7 @@ public class Menu implements World{
             if(mouse.pressed){
                 game.currentWorld= new A1S1(mouse, in, game, player);
                 game.script.scriptUpdate("assetsfile/scripts/a1s1.txt");
+                game.menuCheck=true;
                 mouse.pressed=false;
             }
         }

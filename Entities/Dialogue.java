@@ -6,13 +6,13 @@ public class Dialogue
     public int x,y, width,tframe,tdummy;
     public String name,text;
     public boolean active = true;
-    public Dialogue(int x,int y,int width, String name, String text, int tdummy){
+    public Dialogue(int x,int y,int width, String name, String text){
       this.x=x;
       this.y=y;
       this.width=width;
       this.name=name;
       this.text=text;
-      this.tdummy=tdummy;
+      this.tdummy=2*text.length();
       this.tframe=0;
     }
     public void update(){
