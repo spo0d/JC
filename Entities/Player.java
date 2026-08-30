@@ -11,10 +11,14 @@ public class Player extends Entity{
     int i;
     long frameatk;
     public int stamina;
+    public String lastPressed;
+    public boolean lor;
+    //false left true right
     public Player(Input input,Mouse mouse){
+        this.name="Flavius";
         this.input=input;
         this.mouse = mouse;
-        speed=10;
+        speed=6;
         jumpspeed=15;
         gravity=2;
         this.x=100;
@@ -32,18 +36,20 @@ public class Player extends Entity{
     public void update(){
         //always set to stand cause if nothn i.e idle then spritestand
         sprite=spritestand;
-        
+        i=(i+1)%42;       
         //A
         if(input.move[1]){
             x-=speed;
-            sprite=spritemove[i/12];
-            i=(i+1)%24;
+            sprite=spritemove[i/21+2];
+            lastPressed="A";
+            lor=false;
         }
         //D
         if(input.move[3]){
             x+=speed;
-            sprite=spritemove[i/12];
-            i=(i+1)%24;
+            sprite=spritemove[i/21];
+            lastPressed="D";
+            lor=true;
         }
         //check if dashing
         if(input.move[6]&&stamina>0){
@@ -53,7 +59,7 @@ public class Player extends Entity{
         }
         else {
             if(!input.move[6])stamina=20;
-            speed=10;
+            speed=6;
             
         }
         
@@ -66,11 +72,11 @@ public class Player extends Entity{
                 yold=y;
                 sprite=spritestand; 
             }
-            
+            lastPressed="Space";
         }
         //shift
         if(input.move[2]){
-            
+            lastPressed="Shift";
         }
         //jumpcontinue
         if(jcheck){

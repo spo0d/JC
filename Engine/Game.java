@@ -57,7 +57,7 @@ public class Game extends JPanel implements Runnable{
         setDoubleBuffered(true);
         setFocusable(true);
         addKeyListener(keyboard);
-        player = new Player(keyboard,mouse);
+        player = new Player(keyboard,mouse);    
         camera=new Camera(player,this);
         currentWorld = new Worlds.Menu(mouse,keyboard, this,player);
         
@@ -188,6 +188,4 @@ public class Game extends JPanel implements Runnable{
             drawY += lineHeight; 
         }
     }
-
-
 }
