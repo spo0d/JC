@@ -1,13 +1,12 @@
 #BlueJ class context
-comment0.target=Game
+comment0.params=
+comment0.target=Game()
 comment1.params=
-comment1.target=Game()
-comment2.params=
-comment2.target=void\ run()
-comment3.params=g
-comment3.target=void\ paintComponent(java.awt.Graphics)
-comment4.params=
-comment4.target=void\ update()
-comment5.params=g2\ d\ font
-comment5.target=void\ textLoader(java.awt.Graphics2D,\ Entities.Dialogue,\ java.awt.Font)
-numComments=6
+comment1.target=void\ run()
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment3.params=
+comment3.target=void\ update()
+comment4.params=g2\ d\ font
+comment4.target=void\ textLoader(java.awt.Graphics2D,\ Entities.Dialogue,\ java.awt.Font)
+numComments=5

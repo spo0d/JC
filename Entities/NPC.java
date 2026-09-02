@@ -9,16 +9,16 @@ public class NPC extends Entity{
     public boolean follow;
     private Player player;
     int i = 0;
-    public NPC(Player player, String name, int x,int y, BufferedImage spritestand, BufferedImage spritemove[] ){
-        this.player=player;
+    public NPC(String name, int x,int y, BufferedImage spritestand[], BufferedImage spritemove[] ){
+        //this.player=player;
         this.name=name;
         this.x=x;
         this.y=y;
-        sizex=100;
-        sizey=100;
+        sizex=200;
+        sizey=200;
         this.spritestand=spritestand;
         this.spritemove = spritemove;
-        sprite=spritestand;
+        sprite=spritestand[0];
     }
     @Override
     public void update(){
@@ -41,21 +41,23 @@ public class NPC extends Entity{
              if(xy){
                if(targetDirection>0){
                    if(target-x>0){
+                       if(!lor)lor=true;
                         x = x+speed;
                         sprite=spritemove[i/21];
                    }
                    else{
-                        sprite=spritestand;
+                        sprite=spritestand[0];
                         npcmove = false;
                    }
                }
                else if(targetDirection<0){
                    if(target-x<0){
+                       if(lor)lor=false;
                         x = x-speed;
-                         sprite=spritemove[i/21+2];
+                         sprite=spritemove[i/21];
                    }
                    else{
-                        sprite=spritestand;
+                        sprite=spritestand[0];
                         npcmove = false;
                    }
                }
@@ -68,17 +70,20 @@ public class NPC extends Entity{
                }
          }
     }
-    public void followToggle(){
+    public void followToggle(Player p){
         follow = !follow;
+        player = p;
     }
-    public void followTrue(){
+    public void followTrue(Player p){
         follow = true;
+        player = p;
     }
-    public void followFalse(){
+    public void followFalse(Player p){
         follow = false;
+        player = p;
     }
-    public boolean touchRange(){
-        if(Math.abs(player.x-this.x)<=player.sizex  && Math.abs(player.y-this.y)<=player.sizey)return true;
+    public boolean touchRange(Entity e){
+        if(Math.abs(e.x-this.x)<=e.sizex  && Math.abs(e.y-this.y)<=e.sizey)return true;
         return false;
     }
 }

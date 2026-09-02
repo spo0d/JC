@@ -12,7 +12,8 @@ import java.awt.Color;
 public class Entity {
     
     public String name;
-    
+
+    public boolean lor=true;
     
     public int x;
     public int y;
@@ -32,7 +33,8 @@ public class Entity {
     public boolean xy;
     
     public BufferedImage sprite;
-    public BufferedImage spritestand;
+    public BufferedImage spritestand[] = new BufferedImage[2];
+    public BufferedImage spritestandNPC;
     public BufferedImage spritemove[] = new BufferedImage[4];
     public BufferedImage spritesprint[] = new BufferedImage[4];
     public BufferedImage spritejump;
@@ -49,8 +51,8 @@ public class Entity {
         }
     }
     public void draw(Graphics2D g2) { 
-        g2.drawImage(sprite, x, y,sizex,sizey, null);
-        
+        if(lor)g2.drawImage(sprite, x, y,sizex,sizey, null);
+        else g2.drawImage(sprite, x+sizex, y,-1*sizex,sizey, null);
         //
         g2.setFont(caesarDressingFont);
         FontMetrics fm = g2.getFontMetrics();

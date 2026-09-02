@@ -90,9 +90,8 @@ public class Game extends JPanel implements Runnable{
             offsetx=(widthreal-width)/2;
         }
         
-        
         update();
-        script.run();
+        //script.run();
         repaint();
         
         try{

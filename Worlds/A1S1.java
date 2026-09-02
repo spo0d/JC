@@ -43,9 +43,10 @@ public class A1S1 implements World{
         this.player = player;
         entities = new ArrayList<>();
         
-        entities.add(new NPC(player,"Murellus", player.x-player.sizex-10,player.y,aa1s1.spritestand,aa1s1.spritemove));
-        entities.add(new NPC(player,"Cobbler", 550,475,aa1s1.spritestand,aa1s1.spritemove));
-        entities.add(new NPC(player,"Carpenter", 650,475,aa1s1.spritestand,aa1s1.spritemove));
+        entities.add(new NPC("Murellus", player.x-player.sizex-10,player.y,aa1s1.spritestand,aa1s1.spritemove));
+        entities.add(new NPC("Cobbler", 2082,390,aa1s1.plebsSpritestand,aa1s1.spritemove));
+        entities.add(new NPC("Carpenter", 2182,390,aa1s1.plebsSpritestand,aa1s1.spritemove));
+        ((NPC)entities.get(2)).sprite=aa1s1.plebsSpritestand[1];
         intro = "FLAVIUS and MURELLUS enter on one side of the stage. A CARPENTER, a COBBLER, and some other commoners enter from the other end of the stage.";
         introDialogue = new Dialogue(50, 250, g.widthx-100, "Narrator", intro);
         count = 0;
@@ -97,7 +98,7 @@ public class A1S1 implements World{
     public void update(){
         if(g.interactPressed&&(elock||!start)){
             start = true;
-            ((NPC)entities.get(0)).followTrue();
+            ((NPC)entities.get(0)).followTrue(player);
             if(count==0){
               advanceDialogue();
               count++;
@@ -111,7 +112,7 @@ public class A1S1 implements World{
         } 
         if(start&&screenColor<=765)screenColor++;
         
-        if( !elock && start && in.move[5] && ((NPC)entities.get(1)).touchRange() ){
+        if( !elock && start && in.move[5] && ((NPC)entities.get(1)).touchRange(player) ){
             advanceDialogue();
             elock=true;
            
