@@ -21,8 +21,7 @@ public class AA1S1{
              bg = ImageIO.read(new File("assetsfile/Images/AA1S1/MenuDummy.png"));
              textwhitebg = ImageIO.read(new File("assetsfile/Images/AA1S1/textwhitebg.png"));
              plebsSpritestand[0] = ImageIO.read(new File("assetsfile/Images/AA1S1/cobbler.png"));
-             plebsSpritestand[1] = ImageIO.read(new File("assetsfile/stand2.png"));
-             //
+             plebsSpritestand[1] = ImageIO.read(new File("assetsfile/Images/AA1S1/carpenter.png"));
              spritestand[0] = ImageIO.read(new File("assetsfile/Images/AA1S1/senatorstand1.png"));
              //
              spritemove[0] = ImageIO.read(new File("assetsfile/Images/AA1S1/senatormove1.png"));

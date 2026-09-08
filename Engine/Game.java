@@ -106,23 +106,29 @@ public class Game extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         
-        java.awt.geom.AffineTransform oldTransform = g2.getTransform();
+        Shape oldClip = g2.getClip();
         
+        g2.setClip(offsetx, offsety, width, height);
+        
+        //Game
+        java.awt.geom.AffineTransform oldTransform = g2.getTransform();
         g2.translate(offsetx-(int)(camera.camerax*scalex),offsety);
         g2.scale(scalex,scaley);
+        
         currentWorld.draw(g2);
+        
+        //UI
+        g2.setTransform(oldTransform);
+        g2.translate(offsetx, offsety); 
+        g2.scale(scalex,scaley);
         if(menuCheck){
             g2.setColor(Color.WHITE);
             g2.fillRect(0,590,widthx,135);
         }
-        
-        
-        g2.setTransform(oldTransform);
-        g2.translate(offsetx, offsety); 
-        g2.scale(scalex, scaley);
         for(Entities.Dialogue d : dialogues){
          if(d.active) textLoader(g2, d, font);
         }
+        
     }
     boolean prevEnter;  
     public void update(){

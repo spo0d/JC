@@ -3,6 +3,7 @@ package Entities;
 import Engine.*;
 import Assets.AA1S1;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 public class Player extends Entity{
     Input input;
@@ -15,10 +16,13 @@ public class Player extends Entity{
     
     //
     public short sitLevel=0;
+    int maxXL;
+    int maxXR;
     public Player(Input input,Mouse mouse){
         this.name="Flavius";
         this.input=input;
         this.mouse = mouse;
+        this.hlcolour=new Color(244, 208, 63);
         speed=6;
         jumpspeed=15;
         gravity=2;
@@ -33,8 +37,17 @@ public class Player extends Entity{
     @Override
     public void update(){
         //always set to stand cause if nothn i.e idle then spritestand
+        if(x+sizex>=maxXR && lor){
+            speed=0;
+        }
+        else if(x<=maxXL && !lor){
+            speed=0;
+        }
+        else{
+            speed=6;
+        }
         sprite=spritestand[0];
-        i=(i+1)%42;  
+        i=(i+1)%84;  
         if(sitLevel>=0){
             //A
             if(input.move[1]){
@@ -109,5 +122,17 @@ public class Player extends Entity{
             }
             if(frameatk>=-8&&frameatk!=-1)frameatk++;
         }
+    }
+    public void setWall(int x1, boolean lor){
+        if(lor){
+            maxXR=x1-100;
+        }
+        else{
+            maxXL=x1;
+        }
+    }
+    public void setWall(int x1,int x2){
+        maxXL=x1;
+        maxXR=x2-100;;
     }
 }

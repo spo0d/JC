@@ -13,7 +13,7 @@ public class Camera{
     }
     public void update(){
         int screenLeft = camerax;
-        int screenRight = camerax + game.widthx;
+        int screenRight = camerax + game.widthx-100;
     
         int playerLeft = player.x;
         int playerRight = player.x + player.sizex;
@@ -28,10 +28,6 @@ public class Camera{
             camerax -= screenLeft - playerLeft;
         }
     
-        // Don't let camera go before the beginning of the world
-        if(camerax < 0){
-            camerax = 0;
-            player.x=0;
-        }
+        
     }
 }

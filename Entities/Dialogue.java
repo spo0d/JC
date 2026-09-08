@@ -28,5 +28,6 @@ public class Dialogue
     public void skipToEnd(){
         tframe=tdummy;
     }
+
     
 }

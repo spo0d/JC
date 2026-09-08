@@ -3,14 +3,16 @@ package Entities;
 import Engine.Game;
 import Engine.Input;
 import Assets.AA1S1;
-
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 public class NPC extends Entity{
     public boolean follow;
+    public boolean opaToggle;
     private Player player;
     int i = 0;
-    public NPC(String name, int x,int y, BufferedImage spritestand[], BufferedImage spritemove[] ){
+    public NPC(String name, int x,int y, BufferedImage spritestand[], BufferedImage spritemove[],int colour[]){
         //this.player=player;
+        this.hlcolour=new Color(colour[0], colour[1], colour[2]);
         this.name=name;
         this.x=x;
         this.y=y;
@@ -22,14 +24,14 @@ public class NPC extends Entity{
     }
     @Override
     public void update(){
-        i=(i+1)%42;
+        i=(i+1)%84;
         if(follow){
              int distance=player.x-this.x;
-             if(distance>player.sizex+10){
-                moveTo(player.x-player.sizex-10,true,5);
+             if(distance>this.sizex-100){
+                moveTo(player.x-(this.sizex-100),true,5);
              }
-             else if(distance<-1*player.sizex-10){
-                   moveTo(player.x+player.sizex+10,true,5);
+             else if(distance<-1*(this.sizex-100)){
+                   moveTo(player.x+(this.sizex-100),true,5);
              }
              // if(Math.abs(distance)>Game.screenWidth()&&npcmove){
                  // npcmove=false;
@@ -70,16 +72,8 @@ public class NPC extends Entity{
                }
          }
     }
-    public void followToggle(Player p){
-        follow = !follow;
-        player = p;
-    }
-    public void followTrue(Player p){
-        follow = true;
-        player = p;
-    }
-    public void followFalse(Player p){
-        follow = false;
+    public void follow(Player p, boolean b){
+        follow = b;
         player = p;
     }
     public boolean touchRange(Entity e){

@@ -12,9 +12,9 @@ import java.awt.Color;
 public class Entity {
     
     public String name;
-
+    public boolean highlight;
     public boolean lor=true;
-    
+    public Color hlcolour;
     public int x;
     public int y;
     public int gravity;
@@ -65,6 +65,8 @@ public class Entity {
         RoundRectangle2D roundedRect = new RoundRectangle2D.Double(dummy-5, this.y-textHeight+4,textWidth+10, textHeight+1, 7, 7);
         g2.fill(roundedRect);
         g2.setColor(Color.WHITE);
+        
+        if(this.highlight) g2.setColor(hlcolour);
         g2.draw(roundedRect);
         //draw text
         g2.drawString(this.name,dummy,this.y);
@@ -82,6 +84,7 @@ public class Entity {
         this.targetDirection=target-this.x;
         this.npcmove=true;
     }
+    
 
     
 
