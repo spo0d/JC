@@ -43,7 +43,7 @@ public class Entity {
     public final static Font caesarDressingFont = caesarDressingLoad();
     public static Font caesarDressingLoad(){
         try{
-            Font dummyFont = Font.createFont(Font.TRUETYPE_FONT, new File("assetsfile/fonts/CaesarDressing-Regular.ttf"));
+            Font dummyFont = Font.createFont(Font.TRUETYPE_FONT, Entity.class.getResourceAsStream("/assetsfile/fonts/CaesarDressing-Regular.ttf"));
             return dummyFont.deriveFont(Font.PLAIN,15);
         }
         catch(Exception e){
@@ -54,23 +54,24 @@ public class Entity {
         if(lor)g2.drawImage(sprite, x, y,sizex,sizey, null);
         else g2.drawImage(sprite, x+sizex, y,-1*sizex,sizey, null);
         //
-        g2.setFont(caesarDressingFont);
-        FontMetrics fm = g2.getFontMetrics();
-        int textWidth = fm.stringWidth(this.name);
-        int textHeight = fm.getHeight();
-        int dummy = (2*this.x + this.sizex - textWidth)/2;
-        
-        //draw bg
-        g2.setColor(new Color(0,0,0, 175));
-        RoundRectangle2D roundedRect = new RoundRectangle2D.Double(dummy-5, this.y-textHeight+4,textWidth+10, textHeight+1, 7, 7);
-        g2.fill(roundedRect);
-        g2.setColor(Color.WHITE);
-        
-        if(this.highlight) g2.setColor(hlcolour);
-        g2.draw(roundedRect);
-        //draw text
-        g2.drawString(this.name,dummy,this.y);
-
+        if(!(this instanceof Entities.Objects)   )        {
+            g2.setFont(caesarDressingFont);
+            FontMetrics fm = g2.getFontMetrics();
+            int textWidth = fm.stringWidth(this.name);
+            int textHeight = fm.getHeight();
+            int dummy = (2*this.x + this.sizex - textWidth)/2;
+            
+            //draw bg
+            g2.setColor(new Color(0,0,0, 175));
+            RoundRectangle2D roundedRect = new RoundRectangle2D.Double(dummy-5, this.y-textHeight+4,textWidth+10, textHeight+1, 7, 7);
+            g2.fill(roundedRect);
+            g2.setColor(Color.WHITE);
+            
+            if(this.highlight) g2.setColor(hlcolour);
+            g2.draw(roundedRect);
+            //draw text
+            g2.drawString(this.name,dummy,this.y);
+        }
     }
     public void update() {
     }

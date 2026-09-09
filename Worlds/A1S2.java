@@ -12,7 +12,7 @@ import java.awt.AlphaComposite;
 import java.util.*;
 
 
-public class A1S1 implements World{
+public class A1S2 implements World{
     Input in;
     Mouse mouse;
     Game g;
@@ -26,7 +26,6 @@ public class A1S1 implements World{
     int index;
     Entities.Objects weterFount1;
     Entities.Objects weterFount2;
-    Entities.Objects endShiny;
     ArrayList<Entity> entities;
     ArrayList<Dialogue> sceneLines = new ArrayList<>(); // all the lines for this scene, in order
     ArrayList<String> a1s1talk;
@@ -43,10 +42,7 @@ public class A1S1 implements World{
     
     //dummy locks
     public boolean elock;
-    
-    //scene end boolean
-    public boolean nextScene;
-    public A1S1(Mouse mousedummy,Input keyboarddummy,Game gdummy, Player player){
+    public A1S2(Mouse mousedummy,Input keyboarddummy,Game gdummy, Player player){
         
         in = keyboarddummy;
         mouse = mousedummy;
@@ -57,21 +53,6 @@ public class A1S1 implements World{
         //script = new Script(g, g.scriaddy);
         aa1s1 = new AA1S1();
         entities = new ArrayList<>();
-        
-        names = new HashMap<>();
-        
-        weterFount1 = new Entities.Objects(aa1s1.waterFountain,959,331,63,106);
-        weterFount2 = new Entities.Objects(aa1s1.waterFountain,1701,331,63,106);
-        entities.add(new NPC("Cobbler", 2082,390,aa1s1.plebsSpritestand,aa1s1.spritemove,new int[]{74, 46, 27}));
-        entities.add(new NPC("Carpenter", 2182,390,aa1s1.plebsSpritestand,aa1s1.spritemove,new int[]{195, 155, 120}));
-        entities.add(new NPC("Murellus", player.x-player.sizex-10,player.y,aa1s1.spritestand,aa1s1.spritemove,new int[]{78, 29, 75}));
-        
-        //add names to hasmap
-        names.put("FLAVIUS", player);
-        names.put("COBBLER", entities.get(0));
-        names.put("CARPENTER", entities.get(1));
-        names.put("MURELLUS", entities.get(2));
-        
         
         //
         ((NPC)entities.get(1)).sprite=aa1s1.plebsSpritestand[1];
@@ -91,10 +72,6 @@ public class A1S1 implements World{
         catch(Exception e){
             e.printStackTrace();
         }
-        ((NPC)entities.get(2)).follow(player,true);
-        ((NPC)entities.get(0)).opaToggle=true;
-        ((NPC)entities.get(1)).opaToggle=true;
-        player.sitLevel=-1;
     }
     void advanceDialogue(){
         if(current != null){
@@ -111,28 +88,11 @@ public class A1S1 implements World{
         else{
             current = null;
             sceneOver=true;
-            player.sitLevel=0;
-            ((NPC)entities.get(0)).opaToggle=true;
-            ((NPC)entities.get(1)).opaToggle=true;
-            endShiny = new Entities.Objects(aa1s1.waterFountain,2445,390,63,106);
         }
     }
     @Override
     public void draw(Graphics2D g2){
         g2.drawImage(aa1s1.bg,0,0,2710,590,null);
-        weterFount1.draw(g2);
-        weterFount2.draw(g2);
-        if(endShiny!=null)endShiny.draw(g2);
-        for(Entity e: entities){
-            if(((NPC)e).opaToggle){
-                int dummyDist = Math.abs(e.x-player.x);
-                if(dummyDist<=300 && dummyDist>=200)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (300-dummyDist)/200.0f));
-                else if (dummyDist>200)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
-                else g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-            }
-            e.draw(g2);
-            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-        }
         player.draw(g2);
         if(!start||count<=765){
             g2.setColor(new Color(255,255,255,765/screenColor));
@@ -148,7 +108,6 @@ public class A1S1 implements World{
             start = true;
             
             if(count==0){
-              player.sitLevel=0;
               count++;
               advanceDialogue();
               g.dialogues.clear();
@@ -173,15 +132,6 @@ public class A1S1 implements World{
         
         weterFount1.update();
         weterFount2.update();
-        if(endShiny!=null){
-            endShiny.update();
-            if(endShiny.touchRange(player)&&in.move[5]){
-                g.audio.stopBGSong();
-                g.currentWorld= new A1S2(mouse, in, g, player);
-                mouse.pressed=false;
-                
-            }
-        }
         player.update();
         if(start&&count==0){
             count++;

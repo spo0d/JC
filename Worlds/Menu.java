@@ -5,7 +5,6 @@ import Assets.AMenu;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import Scripts.*;
 import Entities.*;
 public class Menu implements World{
     int posx;
@@ -37,9 +36,9 @@ public class Menu implements World{
         g2.drawImage(amenu.menubg, 0,0,game.widthx,game.heighty,null);
         if(mouse.x>buttonX*game.scalex+game.offsetx && mouse.x<(buttonX+buttonW)*game.scalex+game.offsetx && mouse.y>buttonY*game.scaley+game.offsety && mouse.y<(buttonY+buttonH)*game.scaley+game.offsety){
             g2.drawImage(amenu.start1, (25600-23*buttonW)/40,(40*buttonY-3*buttonH)/40,23*buttonW/20,23*buttonH/20,null);
-            if(mouse.pressed){
+            if(mouse.pressed){                
+                game.audio.stopBGSong();
                 game.currentWorld= new A1S1(mouse, in, game, player);
-                game.script.scriptUpdate("assetsfile/scripts/a1s1.txt");
                 game.menuCheck=true;
                 mouse.pressed=false;
             }

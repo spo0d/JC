@@ -9,7 +9,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.*;
-import Scripts.*;
 import java.util.ArrayList;
 
 public class Game extends JPanel implements Runnable{
@@ -17,6 +16,7 @@ public class Game extends JPanel implements Runnable{
     Camera camera;
     public Mouse mouse;
     public Player player;
+    public Audio audio;
     public Worlds.World currentWorld;
     public  int widthreal;
     public  int heightreal;
@@ -33,8 +33,6 @@ public class Game extends JPanel implements Runnable{
     
     //world check menu
     public boolean menuCheck;
-    
-    public Scripts.Script script;
     public String scriaddy;
     public boolean scripting;
     public int tindex;
@@ -42,8 +40,7 @@ public class Game extends JPanel implements Runnable{
     public ArrayList<Entities.Dialogue> dialogues = new ArrayList<>();
     public Game(){
         scriaddy="assetsfile/scripts/menu.txt";
-        font=new Font("Arial", Font.PLAIN, 35);;
-        script = new Script(this, scriaddy);
+        font=new Font("Arial", Font.PLAIN, 35);
         heighty=720;
         widthx=1280;
         world=0;
@@ -59,8 +56,9 @@ public class Game extends JPanel implements Runnable{
         addKeyListener(keyboard);
         player = new Player(keyboard,mouse);    
         camera=new Camera(player,this);
+        audio=new Audio();
         currentWorld = new Worlds.Menu(mouse,keyboard, this,player);
-        
+        audio.startBGSong("/assetsfile/Sounds/MenuBg.mp3");
         
         Thread gameThread = new Thread(this);
         gameThread.start();
@@ -93,7 +91,6 @@ public class Game extends JPanel implements Runnable{
         update();
         //script.run();
         repaint();
-        
         try{
             Thread.sleep(16);
         }
