@@ -1,5 +1,3 @@
-dummy:dummy
-|
 FLAVIUS:Hence! Home, you idle creatures get you home:
 |
 FLAVIUS:Is this a holiday? What, know you not,

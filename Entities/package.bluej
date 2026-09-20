@@ -1,14 +1,14 @@
 #BlueJ package file
-dependency1.from=NPC
-dependency1.to=Player
+dependency1.from=Objects
+dependency1.to=Entity
 dependency1.type=UsesDependency
-dependency2.from=NPC
-dependency2.to=Entity
+dependency2.from=Entity
+dependency2.to=Objects
 dependency2.type=UsesDependency
-dependency3.from=Entity
-dependency3.to=Objects
+dependency3.from=NPC
+dependency3.to=Player
 dependency3.type=UsesDependency
-dependency4.from=Objects
+dependency4.from=NPC
 dependency4.to=Entity
 dependency4.type=UsesDependency
 objectbench.height=91

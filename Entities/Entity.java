@@ -14,6 +14,7 @@ public class Entity {
     public String name;
     public boolean highlight;
     public boolean lor=true;
+    public boolean lorAfter=true;
     public Color hlcolour;
     public int x;
     public int y;
@@ -27,10 +28,15 @@ public class Entity {
     public boolean jcheck;
     public int yold;
     
-    public int target;
-    public int targetDirection;
+    public int targetX;
+    public int targetY;
+    public int targetDirectionX;
+    public int targetDirectionY;
     public boolean npcmove;
     public boolean xy;
+    public boolean xdone;
+    public boolean ydone;
+    
     
     public BufferedImage sprite;
     public BufferedImage spritestand[] = new BufferedImage[2];
@@ -54,6 +60,7 @@ public class Entity {
         if(lor)g2.drawImage(sprite, x, y,sizex,sizey, null);
         else g2.drawImage(sprite, x+sizex, y,-1*sizex,sizey, null);
         //
+        
         if(!(this instanceof Entities.Objects)   )        {
             g2.setFont(caesarDressingFont);
             FontMetrics fm = g2.getFontMetrics();
@@ -76,17 +83,30 @@ public class Entity {
     public void update() {
     }
     
-    public void moveTo(int target, boolean xy, int speed){
-        this.target = target;
+    public void moveTo(int targetX, int targetY,int speed){
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.speed=speed;
         this.xy=xy;
         //this.speedTop=speedTop;
         //this.speedBottom=speedBottom;
-        this.speed=speed;
-        this.targetDirection=target-this.x;
+        this.targetDirectionX=targetX-this.x;
+        this.targetDirectionY=targetY-this.y;
+        this.npcmove=true;
+    }
+    public void moveTo(int targetX, int targetY){
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.speed=5;
+        this.xy=xy;
+        //this.speedTop=speedTop;
+        //this.speedBottom=speedBottom;
+        this.targetDirectionX=targetX-this.x;
+        this.targetDirectionY=targetY-this.y;
         this.npcmove=true;
     }
     
-
-    
-
+    public void setAfterMoveLOR(boolean b){
+        this.lorAfter=b;
+    }
 }

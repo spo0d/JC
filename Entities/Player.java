@@ -37,6 +37,8 @@ public class Player extends Entity{
     @Override
     public void update(){
         //always set to stand cause if nothn i.e idle then spritestand
+        sprite=spritestand[0];
+        if(lor!=lorAfter)lor=lorAfter;
         if(x+sizex>=maxXR && lor){
             speed=0;
         }
@@ -46,7 +48,6 @@ public class Player extends Entity{
         else{
             speed=6;
         }
-        sprite=spritestand[0];
         i=(i+1)%84;  
         if(sitLevel>=0){
             //A
@@ -122,6 +123,47 @@ public class Player extends Entity{
             }
             if(frameatk>=-8&&frameatk!=-1)frameatk++;
         }
+        
+        
+        //make player follow
+        if(npcmove&&sitLevel==-1){
+           if(Math.abs(targetX-x)>speed){
+                if(targetX>x){
+                      if(!lor)lor=true;
+                      x = x+speed;
+                      sprite=spritemove[i/21];
+                }
+                 else if(targetX<x){
+                      if(lor)lor=false;
+                      x = x-speed;
+                      sprite=spritemove[i/21];
+                }
+           }
+           else{
+               x=targetX;
+               xdone=true;
+           }
+           if(Math.abs(targetY-y)>speed){
+               if(targetY>y){
+                    y = y+speed;
+                    sprite=spritemove[i/21];
+               }
+               else if(targetY<y){
+                    y = y-speed;
+                    sprite=spritemove[i/21];
+               }
+           }
+           else{
+               y=targetY;
+               ydone=true;
+           }
+           if(xdone&&ydone){
+               sprite=spritestand[0];
+               npcmove=false;
+               xdone=false;
+               ydone=false;
+           }
+        }
     }
     public void setWall(int x1, boolean lor){
         if(lor){
@@ -134,5 +176,13 @@ public class Player extends Entity{
     public void setWall(int x1,int x2){
         maxXL=x1;
         maxXR=x2-100;;
+    }
+    public void setChara(String name, int x,int y, BufferedImage spritestand[], BufferedImage spritemove[],int colour[]){
+        this.name=name;
+        this.hlcolour=new Color(colour[0], colour[1], colour[2]);
+        this.x=x;
+        this.y=y;
+        this.spritestand=spritestand;
+        this.spritemove = spritemove;
     }
 }

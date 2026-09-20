@@ -8,4 +8,6 @@ comment3.params=x1\ lor
 comment3.target=void\ setWall(int,\ boolean)
 comment4.params=x1\ x2
 comment4.target=void\ setWall(int,\ int)
-numComments=5
+comment5.params=name\ x\ y\ spritestand\ spritemove\ colour
+comment5.target=void\ setChara(java.lang.String,\ int,\ int,\ java.awt.image.BufferedImage[],\ java.awt.image.BufferedImage[],\ int[])
+numComments=6

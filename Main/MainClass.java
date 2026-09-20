@@ -4,6 +4,8 @@ import Engine.Game;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainClass{
     public static void main(String args[]){
@@ -18,6 +20,15 @@ public class MainClass{
         
         Game game = new Game();
         frame.add(game);
+        
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                game.audio.shutdown();
+                frame.dispose();
+                System.exit(0);
+            }
+        });
         frame.setLocationRelativeTo(null);
         
         frame.setVisible(true);        

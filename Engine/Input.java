@@ -5,6 +5,9 @@ import java.awt.event.KeyListener;
 
 public class Input implements KeyListener
 {   
+    public boolean switcher;
+    public int[] tdnombre = new int[2];
+    public int wsi=0;
     public char input;
     public boolean move[] = new boolean[7];
     @Override
@@ -31,12 +34,19 @@ public class Input implements KeyListener
                 break;
             case KeyEvent.VK_CONTROL:
                 move[6]=true;
+            case KeyEvent.VK_ESCAPE:
+                switcher=true;          
                 break;
         }
     }
     @Override
     public void keyTyped(KeyEvent e){
-        
+        if(switcher&&wsi<2){
+            if(Character.isDigit(e.getKeyChar())){
+               tdnombre[wsi]=e.getKeyChar()-48;
+               wsi++;
+            }
+        }
     }
     @Override
     public void keyReleased(KeyEvent e){

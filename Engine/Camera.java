@@ -6,10 +6,12 @@ public class Camera{
     Player player;
     Game game;
     public int camerax;
+    public int cameray;
     public Camera(Player player, Game game){
         this.player = player;
         this.game = game;
         camerax=0;
+        cameray=0;
     }
     public void update(){
         int screenLeft = camerax;

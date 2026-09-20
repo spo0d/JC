@@ -17,13 +17,19 @@ public class Menu implements World{
     public int count;
     public boolean check;
     public ArrayList<Entity> entities;
+    public boolean stop;
     
     public Menu(Mouse mouse,Input in,Game game, Player player){
+        game.dialogues.clear();
         this.game = game;
         this.mouse = mouse;
         this.in = in;
         this.player = player;
-        entities = new ArrayList<>();
+        player.y=390;
+        player.x=200;
+        game.camera.camerax=0;
+        game.camera.cameray=0;
+        game.audio.startBGSong("/assetsfile/Sounds/MenuBg.mp3");
         amenu = new AMenu();
     }
     @Override
@@ -37,10 +43,7 @@ public class Menu implements World{
         if(mouse.x>buttonX*game.scalex+game.offsetx && mouse.x<(buttonX+buttonW)*game.scalex+game.offsetx && mouse.y>buttonY*game.scaley+game.offsety && mouse.y<(buttonY+buttonH)*game.scaley+game.offsety){
             g2.drawImage(amenu.start1, (25600-23*buttonW)/40,(40*buttonY-3*buttonH)/40,23*buttonW/20,23*buttonH/20,null);
             if(mouse.pressed){                
-                game.audio.stopBGSong();
-                game.currentWorld= new A1S1(mouse, in, game, player);
-                game.menuCheck=true;
-                mouse.pressed=false;
+                stop=true;
             }
         }
         else{
@@ -49,9 +52,15 @@ public class Menu implements World{
     }
     @Override
     public void update(){
+        if(stop){
+            game.audio.stopBGSong();
+            game.currentWorld= new A1S1(mouse, in, game, player);
+            game.menuCheck=true;
+            mouse.pressed=false;
+        }
     }
     @Override
     public ArrayList<Entity> getEntities(){
-        return this.entities;
+        return null;
     }
 }

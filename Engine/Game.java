@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Game extends JPanel implements Runnable{
     public Input keyboard;
-    Camera camera;
+    public Camera camera;
     public Mouse mouse;
     public Player player;
     public Audio audio;
@@ -32,12 +32,17 @@ public class Game extends JPanel implements Runnable{
     Font font;
     
     //world check menu
+    TestDraw td;
     public boolean menuCheck;
     public String scriaddy;
     public boolean scripting;
     public int tindex;
     public boolean interactPressed;
     public ArrayList<Entities.Dialogue> dialogues = new ArrayList<>();
+    public final static Font caesarDressingFont = caesarDressingLoad();
+    
+    public int mouseX;
+    public int mouseY;
     public Game(){
         scriaddy="assetsfile/scripts/menu.txt";
         font=new Font("Arial", Font.PLAIN, 35);
@@ -58,7 +63,6 @@ public class Game extends JPanel implements Runnable{
         camera=new Camera(player,this);
         audio=new Audio();
         currentWorld = new Worlds.Menu(mouse,keyboard, this,player);
-        audio.startBGSong("/assetsfile/Sounds/MenuBg.mp3");
         
         Thread gameThread = new Thread(this);
         gameThread.start();
@@ -69,6 +73,7 @@ public class Game extends JPanel implements Runnable{
     @Override
     public void run(){
        while(true){
+        if(mouse.pressed)System.out.println(mouseX+":x, " + mouseY + ":y");
            if(widthreal!=getWidth()||heightreal!=getHeight()){
             widthreal=getWidth();
             heightreal=getHeight();
@@ -109,21 +114,19 @@ public class Game extends JPanel implements Runnable{
         
         //Game
         java.awt.geom.AffineTransform oldTransform = g2.getTransform();
-        g2.translate(offsetx-(int)(camera.camerax*scalex),offsety);
+        g2.translate(offsetx-(int)(camera.camerax*scalex),offsety-(int)(camera.cameray*scaley));
         g2.scale(scalex,scaley);
         
         currentWorld.draw(g2);
-        
+        if(td!=null)td.draw(g2);
         //UI
         g2.setTransform(oldTransform);
         g2.translate(offsetx, offsety); 
         g2.scale(scalex,scaley);
-        if(menuCheck){
-            g2.setColor(Color.WHITE);
-            g2.fillRect(0,590,widthx,135);
-        }
         for(Entities.Dialogue d : dialogues){
-         if(d.active) textLoader(g2, d, font);
+             g2.setColor(Color.WHITE);
+             g2.fillRect(0,590,widthx,135);
+             if(d.active) textLoader(g2, d, font);
         }
         
     }
@@ -131,22 +134,32 @@ public class Game extends JPanel implements Runnable{
     public void update(){
         interactPressed = keyboard.move[4] && !prevEnter; // true only the exact frame Enter goes down
         prevEnter = keyboard.move[4];
-        currentWorld.update();
+        mouseX = (int)((mouse.x - offsetx) / scalex);
+        mouseY = (int)((mouse.y - offsety) / scaley);
+        if(td==null)currentWorld.update();
+        if(td!=null)td.update();
         camera.update();
         for(Dialogue d: dialogues){
             if(d.active) d.update();
         }
+        if(keyboard.switcher&& keyboard.wsi==2){
+            setActScene(keyboard.tdnombre[0],keyboard.tdnombre[1]);
+            keyboard.switcher=false;
+            keyboard.wsi=0;
+        }
     }
     public void textLoader(Graphics2D g2, Entities.Dialogue d, Font font) {
         
-        g2.setFont(font);
+        g2.setFont(caesarDressingFont);
         g2.setColor(Color.BLACK);
         FontMetrics fm = g2.getFontMetrics();
-        int lineHeight = fm.getHeight();
         
         // Draw the character name relative to the top-left boundary
         g2.drawString(d.name + ": ", d.x, d.y + fm.getAscent());
         
+        g2.setFont(font);
+        fm = g2.getFontMetrics();
+        int lineHeight = fm.getHeight();
         // Step 1: Pre-calculate word wrapping over the FULL text
         // This stops words from jumping around while typing out
         String[] words = d.text.split(" ");
@@ -188,6 +201,43 @@ public class Game extends JPanel implements Runnable{
             
             // Push the next line down
             drawY += lineHeight; 
+        }
+    }
+    public void setActScene(int a, int s){
+        int d =10*a+s;
+        switch(d){
+            case 00:
+                audio.stopBGSong();
+                currentWorld= new Worlds.Menu(mouse,keyboard, this, player);
+                break;
+            case 11:
+                audio.stopBGSong();
+                currentWorld= new A1S1(mouse, keyboard, this, player);
+                menuCheck=true;
+                mouse.pressed=false;
+                break;
+            case 12:
+                audio.stopBGSong();
+                currentWorld= new A1S2(mouse, keyboard, this, player);
+                menuCheck=true;
+                mouse.pressed=false;
+                break;
+            case 67:
+                if(td==null)td = new TestDraw(this, mouse, keyboard);
+                else td=null;
+                menuCheck=true;
+                mouse.pressed=false;
+                break;
+                
+        }
+    }
+    public static Font caesarDressingLoad(){
+        try{
+            Font dummyFont = Font.createFont(Font.TRUETYPE_FONT, Entity.class.getResourceAsStream("/assetsfile/fonts/CaesarDressing-Regular.ttf"));
+            return dummyFont.deriveFont(Font.PLAIN,35);
+        }
+        catch(Exception e){
+            return new Font("SansSerif", Font.PLAIN, 35);
         }
     }
 }

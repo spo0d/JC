@@ -24,14 +24,15 @@ public class NPC extends Entity{
     }
     @Override
     public void update(){
+        if(lor!=lorAfter)lor=lorAfter;
         i=(i+1)%84;
         if(follow){
              int distance=player.x-this.x;
              if(distance>this.sizex-100){
-                moveTo(player.x-(this.sizex-100),true,5);
+                moveTo(player.x-(this.sizex-100),player.y);
              }
              else if(distance<-1*(this.sizex-100)){
-                   moveTo(player.x+(this.sizex-100),true,5);
+                   moveTo(player.x+(this.sizex-100),player.y);
              }
              // if(Math.abs(distance)>Game.screenWidth()&&npcmove){
                  // npcmove=false;
@@ -40,37 +41,43 @@ public class NPC extends Entity{
              
         }
         if(npcmove){
-             if(xy){
-               if(targetDirection>0){
-                   if(target-x>0){
+               if(Math.abs(targetX-x)>speed){
+                   if(targetX>x){
                        if(!lor)lor=true;
                         x = x+speed;
                         sprite=spritemove[i/21];
                    }
-                   else{
-                        sprite=spritestand[0];
-                        npcmove = false;
-                   }
-               }
-               else if(targetDirection<0){
-                   if(target-x<0){
-                       if(lor)lor=false;
+                   else if(targetX<x){
+                        if(lor)lor=false;
                         x = x-speed;
-                         sprite=spritemove[i/21];
-                   }
-                   else{
-                        sprite=spritestand[0];
-                        npcmove = false;
+                        sprite=spritemove[i/21];
                    }
                }
-              } else {
-                  
-                  if((speed > 0 && y >= target) || (speed < 0 && y <= target)){
-                      y = target;
-                      npcmove = false;
-                  }
+               else{
+                   x=targetX;
+                   xdone=true;
                }
-         }
+               if(Math.abs(targetY-y)>speed){
+                   if(targetY>y){
+                        y = y+speed;
+                        sprite=spritemove[i/21];
+                   }
+                   else if(targetY<y){
+                        y = y-speed;
+                        sprite=spritemove[i/21];
+                   }
+               }
+               else{
+                   y=targetY;
+                   ydone=true;
+               }
+               if(xdone&&ydone){
+                   sprite=spritestand[0];
+                   npcmove=false;
+                   xdone=false;
+                   ydone=false;
+               }
+        }           
     }
     public void follow(Player p, boolean b){
         follow = b;
