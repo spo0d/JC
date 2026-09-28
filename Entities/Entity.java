@@ -9,6 +9,8 @@ import java.awt.geom.*;
 import java.awt.FontMetrics;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Canvas;
+
 public class Entity {
     
     public String name;
@@ -47,6 +49,7 @@ public class Entity {
     public BufferedImage spriteattack[] = new BufferedImage[2];
     protected boolean walk=false;
     public final static Font caesarDressingFont = caesarDressingLoad();
+    private FontMetrics fm = (new Canvas()).getFontMetrics(caesarDressingFont);
     public static Font caesarDressingLoad(){
         try{
             Font dummyFont = Font.createFont(Font.TRUETYPE_FONT, Entity.class.getResourceAsStream("/assetsfile/fonts/CaesarDressing-Regular.ttf"));
@@ -63,7 +66,6 @@ public class Entity {
         
         if(!(this instanceof Entities.Objects)   )        {
             g2.setFont(caesarDressingFont);
-            FontMetrics fm = g2.getFontMetrics();
             int textWidth = fm.stringWidth(this.name);
             int textHeight = fm.getHeight();
             int dummy = (2*this.x + this.sizex - textWidth)/2;

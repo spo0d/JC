@@ -47,6 +47,8 @@ public class A1S2 implements World{
     int i=0;
     public int blockNo=0;
     
+    
+    int whiteBang = 0;
     public A1S2(Mouse mousedummy,Input keyboarddummy,Game gdummy, Player player){
         
         in = keyboarddummy;
@@ -112,6 +114,7 @@ public class A1S2 implements World{
     }
     void textBlockLoader(){
             blockNo++;
+            if(blockNo==2)screenColor=0;
             if(blockIndex>=aa1s2.DialogueArr.length)return;
             try{
                  for(String s : aa1s2.DialogueArr[blockIndex].split("\\|")){
@@ -166,21 +169,24 @@ public class A1S2 implements World{
     }
     @Override
     public void draw(Graphics2D g2){
-        g2.drawImage(aa1s2.bgmain,0,0,2710,590,null);
+        g2.drawImage(aa1s2.bgmain,0,0,2710,720,null);
         for(Entity e: entities){
             e.draw(g2);
         }
         player.draw(g2);
-        if(!start||screenColor<=180){
+        if((!start||screenColor<=180)&&blockNo<2){
             g2.setColor(new Color(255,255,255,255/screenColor));
-            g2.fillRect(0,g.camera.cameray,g.widthx,5*g.heighty);
-         }       
-        }
+            g2.fillRect(0,g.camera.cameray,g.widthx,g.heighty);
+         }
+         if((blockNo==2&&screenColor<510)){
+            g2.setColor(new Color(255,255,255,255-Math.abs(255-screenColor)));
+            g2.fillRect(0,g.camera.cameray,g.widthx,g.heighty);
+         }
+    }
     @Override
     public void update(){
        //general dialogue stuff
        if(g.interactPressed&&(elock||!start)){
-            
             if(elock){
                 if(current != null && !current.isFinishedTyping()&&start){
                         current.skipToEnd();   // 1st press on a line: reveal it instantly
@@ -202,20 +208,30 @@ public class A1S2 implements World{
                 }
                 if(entercount<2)entercount++;
             }
-        }  
-       if(start&&screenColor<=360)screenColor++;
-       // in update(), once start:
-       if(start && screenColor>180 && screenColor<=360){
+        }
+       if(blockNo<2){
+          if(blockNo==1&&sceneOver)sceneOver=false;
+          if((start&&screenColor<=360))screenColor++;
+          if(start && screenColor>180 && screenColor<=360){
            g.camera.cameray = (19*g.camera.cameray) / 20; // eases from -720 toward 0
+          } 
+          if(screenColor==361){
+             g.camera.cameray = 0;
+               screenColor = 482;
+          }
        }
-       if(screenColor==361){
-           g.camera.cameray = 0;
-           screenColor = 482;
+       else if(blockNo==2){
+           if((start && screenColor<=510)){
+            screenColor+=2;
+           }
+           else sceneOver=false;
+           if(screenColor==256){
+               entities.clear();
+               player.sitLevel=0;
+           }
        }
-       if(blockNo==1){
-           //g.audio.startBGSong("");
-           if(sceneOver)sceneOver=false;
-       }
+       
+       
        player.update();
        for(Entity e: entities){
            e.update();

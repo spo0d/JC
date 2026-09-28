@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PauseScreen
+comment1.params=g\ m
+comment1.target=PauseScreen(Engine.Game,\ Engine.Mouse)
+comment2.params=g2
+comment2.target=void\ draw(java.awt.Graphics2D)
+comment3.params=
+comment3.target=void\ update()
+comment4.params=
+comment4.target=java.util.ArrayList\ getEntities()
+numComments=5

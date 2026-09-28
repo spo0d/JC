@@ -55,6 +55,7 @@ public class A1S1 implements World{
         g.dialogues.clear();
         //g.audio.startBGSong("");
         this.player = player;
+        player.name = "Flavius";
         player.highlight=false;
         player.hlcolour=new Color(244, 208, 63);
         player.y=390;
@@ -136,7 +137,7 @@ public class A1S1 implements World{
     }
     @Override
     public void draw(Graphics2D g2){
-        g2.drawImage(aa1s1.bg,0,0,2710,590,null);
+        g2.drawImage(aa1s1.bg,0,0,2710,720,null);
         weterFount1.draw(g2);
         weterFount2.draw(g2);
         if(endShiny!=null)endShiny.draw(g2);

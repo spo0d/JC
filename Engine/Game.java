@@ -18,6 +18,7 @@ public class Game extends JPanel implements Runnable{
     public Player player;
     public Audio audio;
     public Worlds.World currentWorld;
+    public PauseScreen ps;
     public  int widthreal;
     public  int heightreal;
     public  int height;
@@ -43,6 +44,9 @@ public class Game extends JPanel implements Runnable{
     
     public int mouseX;
     public int mouseY;
+    //
+    public boolean captureNextFrame = false;
+    private BufferedImage screenSnapshot = null;
     public Game(){
         scriaddy="assetsfile/scripts/menu.txt";
         font=new Font("Arial", Font.PLAIN, 35);
@@ -63,7 +67,6 @@ public class Game extends JPanel implements Runnable{
         camera=new Camera(player,this);
         audio=new Audio();
         currentWorld = new Worlds.Menu(mouse,keyboard, this,player);
-        
         Thread gameThread = new Thread(this);
         gameThread.start();
         
@@ -108,6 +111,7 @@ public class Game extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         
+        
         Shape oldClip = g2.getClip();
         
         g2.setClip(offsetx, offsety, width, height);
@@ -118,7 +122,7 @@ public class Game extends JPanel implements Runnable{
         g2.scale(scalex,scaley);
         
         currentWorld.draw(g2);
-        if(td!=null)td.draw(g2);
+        if(td!=null&&!keyboard.screenPaused)td.draw(g2);
         //UI
         g2.setTransform(oldTransform);
         g2.translate(offsetx, offsety); 
@@ -128,7 +132,7 @@ public class Game extends JPanel implements Runnable{
              g2.fillRect(0,590,widthx,135);
              if(d.active) textLoader(g2, d, font);
         }
-        
+        if(keyboard.screenPaused&&ps!=null)ps.draw(g2);
     }
     boolean prevEnter;  
     public void update(){
@@ -136,8 +140,17 @@ public class Game extends JPanel implements Runnable{
         prevEnter = keyboard.move[4];
         mouseX = (int)((mouse.x - offsetx) / scalex);
         mouseY = (int)((mouse.y - offsety) / scaley);
-        if(td==null)currentWorld.update();
-        if(td!=null)td.update();
+        if (keyboard.screenPaused && ps == null) {
+          ps = new PauseScreen(this, mouse);
+          audio.pauseBGSong();
+        }
+        else if (!keyboard.screenPaused && ps != null) {
+            ps = null;
+            audio.resumeBGSong();
+        }
+        if(td==null&&!keyboard.screenPaused)currentWorld.update();
+        if(td==null&&keyboard.screenPaused&&ps!=null)ps.update();
+        if(td!=null&&!keyboard.screenPaused)td.update();
         camera.update();
         for(Dialogue d: dialogues){
             if(d.active) d.update();
@@ -240,4 +253,5 @@ public class Game extends JPanel implements Runnable{
             return new Font("SansSerif", Font.PLAIN, 35);
         }
     }
+    
 }

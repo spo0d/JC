@@ -10,6 +10,8 @@ public class Input implements KeyListener
     public int wsi=0;
     public char input;
     public boolean move[] = new boolean[7];
+    public boolean screenPaused;
+    public volatile boolean escPressed;
     @Override
     public void keyPressed(KeyEvent e){
         input = e.getKeyChar();
@@ -33,14 +35,23 @@ public class Input implements KeyListener
                 move[5]=true;
                 break;
             case KeyEvent.VK_CONTROL:
-                move[6]=true;
+                move[6]=true;;          
+                break;
             case KeyEvent.VK_ESCAPE:
+                if(!escPressed){
+                  screenPaused=!screenPaused;
+                  escPressed=true;
+                }          
+                break;
+            case KeyEvent.VK_SLASH:
                 switcher=true;          
                 break;
         }
     }
     @Override
     public void keyTyped(KeyEvent e){
+        if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+        }
         if(switcher&&wsi<2){
             if(Character.isDigit(e.getKeyChar())){
                tdnombre[wsi]=e.getKeyChar()-48;
@@ -71,6 +82,9 @@ public class Input implements KeyListener
                 break;
             case KeyEvent.VK_CONTROL:
                 move[6]=false;
+                break;
+            case KeyEvent.VK_ESCAPE:
+                escPressed=false;
                 break;
         }
         input='\0';

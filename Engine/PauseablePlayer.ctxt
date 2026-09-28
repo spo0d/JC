@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=PauseablePlayer
+comment1.params=input
+comment1.target=PauseablePlayer(java.io.InputStream)
+comment2.params=
+comment2.target=int\ getCurrentFrame()
+numComments=3

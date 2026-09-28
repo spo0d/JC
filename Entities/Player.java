@@ -38,7 +38,7 @@ public class Player extends Entity{
     public void update(){
         //always set to stand cause if nothn i.e idle then spritestand
         sprite=spritestand[0];
-        if(lor!=lorAfter)lor=lorAfter;
+        
         if(x+sizex>=maxXR && lor){
             speed=0;
         }
@@ -48,6 +48,7 @@ public class Player extends Entity{
         else{
             speed=6;
         }
+        if(lor!=lorAfter)lor=lorAfter;
         i=(i+1)%84;  
         if(sitLevel>=0){
             //A
