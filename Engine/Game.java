@@ -216,6 +216,33 @@ public class Game extends JPanel implements Runnable{
             drawY += lineHeight; 
         }
     }
+    public void setActScene(int d){
+        switch(d){
+            case 00:
+                audio.stopBGSong();
+                currentWorld= new Worlds.Menu(mouse,keyboard, this, player);
+                break;
+            case 11:
+                audio.stopBGSong();
+                currentWorld= new A1S1(mouse, keyboard, this, player);
+                menuCheck=true;
+                mouse.pressed=false;
+                break;
+            case 12:
+                audio.stopBGSong();
+                currentWorld= new A1S2(mouse, keyboard, this, player);
+                menuCheck=true;
+                mouse.pressed=false;
+                break;
+            case 67:
+                if(td==null)td = new TestDraw(this, mouse, keyboard);
+                else td=null;
+                menuCheck=true;
+                mouse.pressed=false;
+                break;
+                
+        }
+    }
     public void setActScene(int a, int s){
         int d =10*a+s;
         switch(d){

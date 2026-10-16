@@ -56,14 +56,14 @@ public class Player extends Entity{
                 x-=speed;
                 sprite=spritemove[i/21];
                 lastPressed="A";
-                lor=false;
+                lorAfter=false;
             }
             //D
             if(input.move[3]){
                 x+=speed;
                 sprite=spritemove[i/21];
                 lastPressed="D";
-                lor=true;
+                lorAfter=true;
             }
         }
         if(sitLevel>=1){
@@ -127,7 +127,7 @@ public class Player extends Entity{
         
         
         //make player follow
-        if(npcmove&&sitLevel==-1){
+        if(npcmove&&sitLevel<=-1){
            if(Math.abs(targetX-x)>speed){
                 if(targetX>x){
                       if(!lor)lor=true;

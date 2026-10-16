@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=SaveConverter
+comment1.params=player
+comment1.target=PlayerData\ getPlayerData(Entities.Player)
+comment2.params=player\ data
+comment2.target=void\ applyPlayerData(Entities.Player,\ PlayerData)
+comment3.params=npc
+comment3.target=java.util.ArrayList\ getNPCData(java.util.ArrayList)
+numComments=4

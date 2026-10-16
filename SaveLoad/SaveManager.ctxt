@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=SaveManager
+comment1.params=data\ path
+comment1.target=void\ save(SaveData,\ java.lang.String)
+comment2.params=path
+comment2.target=SaveData\ load(java.lang.String)
+comment3.params=g\ path
+comment3.target=boolean\ saveGame(Engine.Game,\ java.lang.String)
+comment4.params=g\ path
+comment4.target=boolean\ loadGame(Engine.Game,\ java.lang.String)
+numComments=5

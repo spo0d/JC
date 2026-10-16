@@ -1,0 +1,18 @@
+{
+  "saveVersion": 1,
+  "scene": 12,
+  "player": {
+    "name": "Brutus",
+    "x": 500,
+    "y": 390,
+    "lor": true,
+    "sitLevel": 0,
+    "wallL": 0,
+    "wallR": 0
+  },
+  "world": {
+    "stage": 0,
+    "extra": {}
+  },
+  "npcs": []
+}

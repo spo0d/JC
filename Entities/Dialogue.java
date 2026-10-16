@@ -4,16 +4,18 @@ package Entities;
 public class Dialogue
 {
     public int x,y, width,tframe,tdummy;
+    public String keyCode;
     public String name,text;
     public boolean active = true;
-    public Dialogue(int x,int y,int width, String name, String text){
+    public Dialogue(int x,int y,int width,String keyCode, String name, String text){
       this.x=x;
       this.y=y;
-      this.width=width;
+      this.width=width; 
       this.name=name;
       this.text=text;
       this.tdummy=2*text.length();
       this.tframe=0;
+      this.keyCode=keyCode;
     }
     public void update(){
         if(tframe<tdummy)tframe++;

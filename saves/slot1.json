@@ -1,0 +1,18 @@
+{
+  "saveVersion": 1,
+  "scene": 11,
+  "player": {
+    "name": "Flavius",
+    "x": 200,
+    "y": 390,
+    "lor": true,
+    "sitLevel": -1,
+    "wallL": 0,
+    "wallR": 0
+  },
+  "worldData": {
+    "stage": 0,
+    "extra": {}
+  },
+  "npcs": []
+}

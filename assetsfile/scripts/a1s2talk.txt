@@ -1,647 +1,662 @@
-CAESAR:null:Calpurnia!
+say:CAESAR:Calpurnia!
 |
-CASCA:null:Peace, ho! Caesar speaks.
+say:CASCA:Peace, ho! Caesar speaks.
 |
-CAESAR:null:Calpurnia!
+say:CAESAR:Calpurnia!
 |
-CALPURNIA:686,390:Here, my lord.
+move:CALPURNIA:686,390
 |
-CAESAR:null:Stand you directly in Antonius' way,
+say:CALPURNIA:Here, my lord.
 |
-CAESAR:null:When he doth run his course. Antonius!
+say:CAESAR:Stand you directly in Antonius' way,
 |
-ANTONY:null:Caesar, my lord.
+say:CAESAR:When he doth run his course. Antonius!
 |
-CAESAR:null:Forget not, in your speed, Antonius,
+say:ANTONY:Caesar, my lord.
 |
-CAESAR:null:To touch Calpurnia; for our elders say,
+say:CAESAR:Forget not, in your speed, Antonius,
 |
-CAESAR:null:The barren, touchèd in this holy chase,
+say:CAESAR:To touch Calpurnia; for our elders say,
 |
-CAESAR:null:Shake off their sterile curse.
+say:CAESAR:The barren, touchèd in this holy chase,
 |
-ANTONY:null:I shall remember:
+say:CAESAR:Shake off their sterile curse.
 |
-ANTONY:null:When Caesar says 'Do this', it is performed.
+say:ANTONY:I shall remember:
 |
-CAESAR:null:Set on, and leave no ceremony out.
+say:ANTONY:When Caesar says 'Do this', it is performed.
+|
+say:CAESAR:Set on, and leave no ceremony out.
+|
+*****
+move:SOOTHSAYER:300,390
+|
+say:SOOTHSAYER:Caesar!
+|
+say:CAESAR:Ha! Who calls?
+|
+say:CASCA:Bid every noise be still. Peace yet again!
+|
+say:CAESAR:Who is it in the press that calls on me?
+|
+say:CAESAR:I hear a tongue, shriller than all the music,
+|
+say:CAESAR:Cry 'Caesar!' Speak. Caesar is turned to hear.
+|
+say:SOOTHSAYER:Beware the Ides of March.
+|
+say:CAESAR:What man is that?
+|
+say:BRUTUS:A soothsayer bids you beware the ides of March.
+|
+say:CAESAR:Set him before me. Let me see his face.
+|
+say:CASSIUS:Fellow, come from the throng. Look upon Caesar.
+|
+say:CAESAR:What sayst thou to me now? Speak once again.
+|
+move:CASSIUS:306,390
+|
+look:CASSIUS:true
+|
+move:CASCA:377,390
+|
+look:CASCA:true
+|
+move:BRUTUS:460,390
+|
+look:BRUTUS:true
+|
+move:CALPURNIA:731,390
+|
+look:CALPURNIA:false
+|
+move:CAESAR:686,390
+|
+look:CAESAR:false
+|
+move:SOOTHSAYER:563,390
+|
+look:SOOTHSAYER:true
+|
+say:SOOTHSAYER:Beware the Ides of March.
+|
+say:CAESAR:He is a dreamer. Let us leave him. Pass.
 |
 *****
 |
-SOOTHSAYER:348,390:Caesar!
+say:CASSIUS:Will you go see the order of the course?
 |
-CAESAR:null:Ha! Who calls?
+say:BRUTUS:Not I.
 |
-CASCA:null:Bid every noise be still.  Peace yet again!
+say:CASSIUS:I pray you do.
 |
-CAESAR:null:Who is it in the press that calls on me?
+say:BRUTUS:I am not gamesome. I do lack some part
 |
-CAESAR:null:I hear a tongue, shriller than all the music,
+say:BRUTUS:Of that quick spirit that is in Antony.
 |
-CAESAR:null:Cry 'Caesar!' Speak. Caesar is turned to hear.
+say:BRUTUS:Let me not hinder, Cassius, your desires.
 |
-SOOTHSAYER:null:Beware the Ides of March.
+say:BRUTUS:I'll leave you.
 |
-CAESAR:null:What man is that?
+say:CASSIUS:Brutus, I do observe you now of late;
 |
-BRUTUS:null:A soothsayer bids you beware the ides of March.
+say:CASSIUS:I have not from your eyes that gentleness
 |
-CAESAR:null:Set him before me. Let me see his face.
+say:CASSIUS:And show of love as I was wont to have.
 |
-CASSIUS:null:Fellow, come from the throng. Look upon Caesar.
+say:CASSIUS:You bear too stubborn and too strange a hand
 |
-CAESAR:null:What sayst thou to me now? Speak once again.
+say:CASSIUS:Over your friend that loves you.
 |
-CASSIUS:306,390:right
+say:BRUTUS:Cassius,
 |
-CASCA:377,390:right
+say:BRUTUS:Be not deceived. If I have veiled my look,
 |
-BRUTUS:460,390:right
+say:BRUTUS:I turn the trouble of my countenance
 |
-CALPURNIA:731,390:left
+say:BRUTUS:Merely upon myself. Vexed I am
 |
-CAESAR:686,390:left
+say:BRUTUS:Of late with passions of some difference,
 |
-SOOTHSAYER:563,390:son
+say:BRUTUS:Conceptions only proper to myself,
 |
-SOOTHSAYER:null:Beware the Ides of March.
+say:BRUTUS:Which give some soil, perhaps, to my behaviors.
 |
-CAESAR:null:He is a dreamer.  Let us leave him.  Pass.
+say:BRUTUS:But let not therefore my good friends be grieved —
+|
+say:BRUTUS:Among which number, Cassius, be you one —
+|
+say:BRUTUS:Nor construe any further my neglect,
+|
+say:BRUTUS:Than that poor Brutus, with himself at war,
+|
+say:BRUTUS:Forgets the shows of love to other men.
+|
+say:CASSIUS:Then, Brutus, I have much mistook your passion;
+|
+say:CASSIUS:By means whereof this breast of mine hath buried
+|
+say:CASSIUS:Thoughts of great value, worthy cogitations.
+|
+say:CASSIUS:Tell me, good Brutus, can you see your face?
+|
+say:BRUTUS:No, Cassius; for the eye sees not itself,
+|
+say:BRUTUS:But by reflection, by some other things.
+|
+say:CASSIUS:'Tis just;
+|
+say:CASSIUS:And it is very much lamented, Brutus,
+|
+say:CASSIUS:That you have no such mirrors as will turn
+|
+say:CASSIUS:Your hidden worthiness into your eye,
+|
+say:CASSIUS:That you might see your shadow. I have heard,
+|
+say:CASSIUS:Where many of the best respect in Rome —
+|
+say:CASSIUS:Except immortal Caesar — speaking of Brutus,
+|
+say:CASSIUS:And groaning underneath this age's yoke,
+|
+say:CASSIUS:Have wished that noble Brutus had his eyes.
+|
+say:BRUTUS:Into what dangers would you lead me, Cassius,
+|
+say:BRUTUS:That you would have me seek into myself
+|
+say:BRUTUS:For that which is not in me?
+|
+say:CASSIUS:Therefore, good Brutus, be prepared to hear.
+|
+say:CASSIUS:And since you know you cannot see yourself
+|
+say:CASSIUS:So well as by reflection, I, your glass,
+|
+say:CASSIUS:Will modestly discover to yourself
+|
+say:CASSIUS:That of yourself which you yet know not of.
+|
+say:CASSIUS:And be not jealous on me, gentle Brutus.
+|
+say:CASSIUS:Were I a common laugher; or did use
+|
+say:CASSIUS:To stale with ordinary oaths my love
+|
+say:CASSIUS:To every new protester; if you know
+|
+say:CASSIUS:That I do fawn on men, and hug them hard,
+|
+say:CASSIUS:And after scandal them; or if you know
+|
+say:CASSIUS:That I profess myself in banqueting
+|
+say:CASSIUS:To all the rout; then hold me dangerous.
 |
 *****
 |
-CASSIUS:null:Will you go see the order of the course?
+say:BRUTUS:What means this shouting? I do fear the people
 |
-BRUTUS:null:Not I.
+say:BRUTUS:Choose Caesar for their king.
 |
-CASSIUS:null:I pray you do.
+say:CASSIUS:Ay, do you fear it?
 |
-BRUTUS:null:I am not gamesome.  I do lack some part
+say:CASSIUS:Then must I think you would not have it so.
 |
-BRUTUS:null:Of that quick spirit that is in Antony.
+say:BRUTUS:I would not, Cassius, yet I love him well.
 |
-BRUTUS:null:Let me not hinder, Cassius, your desires.
+say:BRUTUS:But wherefore do you hold me here so long?
 |
-BRUTUS:null:I'll leave you.
+say:BRUTUS:What is it that you would impart to me?
 |
-CASSIUS:null:Brutus, I do observe you now of late;
+say:BRUTUS:If it be aught toward the general good,
 |
-CASSIUS:null:I have not from your eyes that gentleness
+say:BRUTUS:Set honor in one eye and death i' th’ other,
 |
-CASSIUS:null:And show of love as I was wont to have.
+say:BRUTUS:And I will look on both indifferently.
 |
-CASSIUS:null:You bear too stubborn and too strange a hand
+say:BRUTUS:For let the gods so speed me, as I love
 |
-CASSIUS:null:Over your friend that loves you.
+say:BRUTUS:The name of honor more than I fear death.
 |
-BRUTUS:null:Cassius,
+say:CASSIUS:I know that virtue to be in you, Brutus,
 |
-BRUTUS:null:Be not deceived.  If I have veiled my look,
+say:CASSIUS:As well as I do know your outward favor.
 |
-BRUTUS:null:I turn the trouble of my countenance
+say:CASSIUS:Well, honor is the subject of my story.
 |
-BRUTUS:null:Merely upon myself. Vexed I am
+say:CASSIUS:I cannot tell what you and other men
 |
-BRUTUS:null:Of late with passions of some difference,
+say:CASSIUS:Think of this life; but for my single self,
 |
-BRUTUS:null:Conceptions only proper to myself,
+say:CASSIUS:I had as lief not be as live to be
 |
-BRUTUS:null:Which give some soil, perhaps, to my behaviors.
+say:CASSIUS:In awe of such a thing as I myself.
 |
-BRUTUS:null:But let not therefore my good friends be grieved —
+say:CASSIUS:I was born free as Caesar, so were you;
 |
-BRUTUS:null:Among which number, Cassius, be you one —
+say:CASSIUS:We both have fed as well, and we can both
 |
-BRUTUS:null:Nor construe any further my neglect,
+say:CASSIUS:Endure the winter's cold as well as he.
 |
-BRUTUS:null:Than that poor Brutus, with himself at war,
+say:CASSIUS:For once upon a raw and gusty day,
 |
-BRUTUS:null:Forgets the shows of love to other men.
+say:CASSIUS:The troubled Tiber chafing with her shores,
 |
-CASSIUS:null:Then, Brutus, I have much mistook your passion;
+say:CASSIUS:Caesar said to me ‘Dar'st thou, Cassius, now
 |
-CASSIUS:null:By means whereof this breast of mine hath buried
+say:CASSIUS:Leap in with me into this angry flood
 |
-CASSIUS:null:Thoughts of great value, worthy cogitations.
+say:CASSIUS:And swim to yonder point?' Upon the word,
 |
-CASSIUS:null:Tell me, good Brutus, can you see your face?
+say:CASSIUS:Accoutred as I was, I plungèd in
 |
-BRUTUS:null:No, Cassius; for the eye sees not itself,
+say:CASSIUS:And bade him follow; so indeed he did.
 |
-BRUTUS:null:But by reflection, by some other things.
+say:CASSIUS:The torrent roared, and we did buffet it
 |
-CASSIUS:null:'Tis just;
+say:CASSIUS:With lusty sinews, throwing it aside,
 |
-CASSIUS:null:And it is very much lamented, Brutus,
+say:CASSIUS:And stemming it with hearts of controversy.
 |
-CASSIUS:null:That you have no such mirrors as will turn
+say:CASSIUS:But ere we could arrive the point proposed,
 |
-CASSIUS:null:Your hidden worthiness into your eye,
+say:CASSIUS:Caesar cried 'Help me, Cassius, or I sink!'
 |
-CASSIUS:null:That you might see your shadow. I have heard,
+say:CASSIUS:I, as Aeneas, our great ancestor,
 |
-CASSIUS:null:Where many of the best respect in Rome —
+say:CASSIUS:Did from the flames of Troy upon his shoulder
 |
-CASSIUS:null:Except immortal Caesar — speaking of Brutus,
+say:CASSIUS:The old Anchises bear, so from the waves of Tiber
 |
-CASSIUS:null:And groaning underneath this age's yoke,
+say:CASSIUS:Did I the tirèd Caesar. And this man
 |
-CASSIUS:null:Have wished that noble Brutus had his eyes.
+say:CASSIUS:Is now become a god, and Cassius is
 |
-BRUTUS:null:Into what dangers would you lead me, Cassius,
+say:CASSIUS:A wretched creature, and must bend his body,
 |
-BRUTUS:null:That you would have me seek into myself
+say:CASSIUS:If Caesar carelessly but nod on him.
 |
-BRUTUS:null:For that which is not in me?
+say:CASSIUS:He had a fever when he was in Spain,
 |
-CASSIUS:null:Therefore, good Brutus, be prepared to hear.
+say:CASSIUS:And when the fit was on him I did mark
 |
-CASSIUS:null:And since you know you cannot see yourself
+say:CASSIUS:How he did shake. 'Tis true, this god did shake!
 |
-CASSIUS:null:So well as by reflection, I, your glass,
+say:CASSIUS:His coward lips did from their color fly,
 |
-CASSIUS:null:Will modestly discover to yourself
+say:CASSIUS:And that same eye whose bend doth awe the world
 |
-CASSIUS:null:That of yourself which you yet know not of.
+say:CASSIUS:Did lose his lustre. I did hear him groan —
 |
-CASSIUS:null:And be not jealous on me, gentle Brutus.
+say:CASSIUS:Ay, and that tongue of his that bade the Romans
 |
-CASSIUS:null:Were I a common laugher; or did use
+say:CASSIUS:Mark him, and write his speeches in their books,
 |
-CASSIUS:null:To stale with ordinary oaths my love
+say:CASSIUS:Alas, it cried 'Give me some drink, Titinius,'
 |
-CASSIUS:null:To every new protester; if you know
+say:CASSIUS:As a sick girl. Ye gods, it doth amaze me
 |
-CASSIUS:null:That I do fawn on men, and hug them hard,
+say:CASSIUS:A man of such a feeble temper should
 |
-CASSIUS:null:And after scandal them; or if you know
+say:CASSIUS:So get the start of the majestic world
 |
-CASSIUS:null:That I profess myself in banqueting
-|
-CASSIUS:null:To all the rout; then hold me dangerous.
+say:CASSIUS:And bear the palm alone.
 |
 *****
 |
-BRUTUS:null:What means this shouting? I do fear the people
+say:BRUTUS:Another general shout!
 |
-BRUTUS:null:Choose Caesar for their king.
+say:BRUTUS:I do believe that these applauses are
 |
-CASSIUS:null:Ay, do you fear it?
+say:BRUTUS:For some new honors that are heaped on Caesar.
 |
-CASSIUS:null:Then must I think you would not have it so.
+say:CASSIUS:Why, man, he doth bestride the narrow world
 |
-BRUTUS:null:I would not, Cassius, yet I love him well.
+say:CASSIUS:Like a colossus, and we petty men
 |
-BRUTUS:null:But wherefore do you hold me here so long?
+say:CASSIUS:Walk under his huge legs and peep about
 |
-BRUTUS:null:What is it that you would impart to me?
+say:CASSIUS:To find ourselves dishonorable graves.
 |
-BRUTUS:null:If it be aught toward the general good,
+say:CASSIUS:Men at some time are masters of their fates.
 |
-BRUTUS:null:Set honor in one eye and death i' th’  other,
+say:CASSIUS:The fault, dear Brutus, is not in our stars,
 |
-BRUTUS:null:And I will look on both indifferently.
+say:CASSIUS:But in ourselves, that we are underlings.
 |
-BRUTUS:null:For let the gods so speed me, as I love
+say:CASSIUS:'Brutus' and 'Caesar' — what should be in that 'Caesar'?
 |
-BRUTUS:null:The name of honor more than I fear death.
+say:CASSIUS:Why should that name be sounded more than yours?
 |
-CASSIUS:null:I know that virtue to be in you, Brutus,
+say:CASSIUS:Write them together, yours is as fair a name.
 |
-CASSIUS:null:As well as I do know your outward favor.
+say:CASSIUS:Sound them, it doth become the mouth as well.
 |
-CASSIUS:null:Well, honor is the subject of my story.
+say:CASSIUS:Weigh them, it is as heavy. Conjure with 'em,
 |
-CASSIUS:null:I cannot tell what you and other men
+say:CASSIUS:'Brutus' will start a spirit as soon as 'Caesar'.
 |
-CASSIUS:null:Think of this life; but for my single self,
+say:CASSIUS:Now in the names of all the gods at once,
 |
-CASSIUS:null:I had as lief not be as live to be
+say:CASSIUS:Upon what meat doth this our Caesar feed
 |
-CASSIUS:null:In awe of such a thing as I myself.
+say:CASSIUS:That he is grown so great? Age, thou art shamed!
 |
-CASSIUS:null:I was born free as Caesar, so were you;
+say:CASSIUS:Rome, thou hast lost the breed of noble bloods!
 |
-CASSIUS:null:We both have fed as well, and we can both
+say:CASSIUS:When went there by an age, since the great flood,
 |
-CASSIUS:null:Endure the winter's cold as well as he.
+say:CASSIUS:But it was famed with more than with one man?
 |
-CASSIUS:null:For once upon a raw and gusty day,
+say:CASSIUS:When could they say, till now, that talked of Rome,
 |
-CASSIUS:null:The troubled Tiber chafing with her shores,
+say:CASSIUS:That her wide walls encompassed but one man?
 |
-CASSIUS:null:Caesar said to me ‘Dar'st thou, Cassius, now
+say:CASSIUS:Now is it Rome indeed, and room enough,
 |
-CASSIUS:null:Leap in with me into this angry flood
+say:CASSIUS:When there is in it but one only man.
 |
-CASSIUS:null:And swim to yonder point?' Upon the word,
+say:CASSIUS:O, you and I have heard our fathers say
 |
-CASSIUS:null:Accoutred as I was, I plungèd in
+say:CASSIUS:There was a Brutus once that would have brooked
 |
-CASSIUS:null:And bade him follow; so indeed he did.
+say:CASSIUS:Th'eternal devil to keep his state in Rome
 |
-CASSIUS:null:The torrent roared, and we did buffet it
+say:CASSIUS:As easily as a king.
 |
-CASSIUS:null:With lusty sinews, throwing it aside,
+say:BRUTUS:That you do love me, I am nothing jealous.
 |
-CASSIUS:null:And stemming it with hearts of controversy.
+say:BRUTUS:What you would work me to, I have some aim.
 |
-CASSIUS:null:But ere we could arrive the point proposed,
+say:BRUTUS:How I have thought of this, and of these times,
 |
-CASSIUS:null:Caesar cried 'Help me, Cassius, or I sink!'
+say:BRUTUS:I shall recount hereafter. For this present,
 |
-CASSIUS:null:I, as Aeneas, our great ancestor,
+say:BRUTUS:I would not —so with love I might entreat you —
 |
-CASSIUS:null:Did from the flames of Troy upon his shoulder
+say:BRUTUS:Be any further moved. What you have said
 |
-CASSIUS:null:The old Anchises bear, so from the waves of Tiber
+say:BRUTUS:I will consider; what you have to say
 |
-CASSIUS:null:Did I the tirèd Caesar. And this man
+say:BRUTUS:I will with patience hear, and find a time
 |
-CASSIUS:null:Is now become a god, and Cassius is
+say:BRUTUS:Both meet to hear and answer such high things.
 |
-CASSIUS:null:A wretched creature, and must bend his body,
+say:BRUTUS:Till then, my noble friend, chew upon this:null:
 |
-CASSIUS:null:If Caesar carelessly but nod on him.
+say:BRUTUS:Brutus had rather be a villager
 |
-CASSIUS:null:He had a fever when he was in Spain,
+say:BRUTUS:Than to repute himself a son of Rome
 |
-CASSIUS:null:And when the fit was on him I did mark
+say:BRUTUS:Under these hard conditions as this time
 |
-CASSIUS:null:How he did shake.  'Tis true, this god did shake!
+say:BRUTUS:Is like to lay upon us.
 |
-CASSIUS:null:His coward lips did from their color fly,
+say:CASSIUS:I am glad
 |
-CASSIUS:null:And that same eye whose bend doth awe the world
+say:CASSIUS:That my weak words have struck but thus much show
 |
-CASSIUS:null:Did lose his lustre.  I did hear him groan —
-|
-CASSIUS:null:Ay, and that tongue of his that bade the Romans
-|
-CASSIUS:null:Mark him, and write his speeches in their books,
-|
-CASSIUS:null:Alas, it cried 'Give me some drink, Titinius,'
-|
-CASSIUS:null:As a sick girl. Ye gods, it doth amaze me
-|
-CASSIUS:null:A man of such a feeble temper should
-|
-CASSIUS:null:So get the start of the majestic world
-|
-CASSIUS:null:And bear the palm alone.
+say:CASSIUS:Of fire from Brutus.
 |
 *****
 |
-BRUTUS:null:Another general shout!
+say:BRUTUS:The games are done and Caesar is returning.
 |
-BRUTUS:null:I do believe that these applauses are
+say:CASSIUS:As they pass by, pluck Casca by the sleeve,
 |
-BRUTUS:null:For some new honors that are heaped on Caesar.
+say:CASSIUS:And he will, after his sour fashion, tell you
 |
-CASSIUS:null:Why, man, he doth bestride the narrow world
+say:CASSIUS:What hath proceeded worthy note today.
 |
-CASSIUS:null:Like a colossus, and we petty men
+say:BRUTUS:I will do so. But, look you, Cassius,
 |
-CASSIUS:null:Walk under his huge legs and peep about
+say:BRUTUS:The angry spot doth glow on Caesar's brow,
 |
-CASSIUS:null:To find ourselves dishonorable graves.
+say:BRUTUS:And all the rest look like a chidden train.
 |
-CASSIUS:null:Men at some time are masters of their fates.
+say:BRUTUS:Calpurnia's cheek is pale, and Cicero
 |
-CASSIUS:null:The fault, dear Brutus, is not in our stars,
+say:BRUTUS:Looks with such ferret and such fiery eyes
 |
-CASSIUS:null:But in ourselves, that we are underlings.
+say:BRUTUS:As we have seen him in the Capitol,
 |
-CASSIUS:null:'Brutus' and 'Caesar' — what should be in that 'Caesar'?
+say:BRUTUS:Being crossed in conference by some senators.
 |
-CASSIUS:null:Why should that name be sounded more than yours?
+say:CASSIUS:Casca will tell us what the matter is.
 |
-CASSIUS:null:Write them together, yours is as fair a name.
+say:CAESAR:Antonius!
 |
-CASSIUS:null:Sound them, it doth become the mouth as well.
+say:ANTONY:Caesar?
 |
-CASSIUS:null:Weigh them, it is as heavy.  Conjure with 'em,
+say:CAESAR:[Privately to Antony] Let me have men about me that are fat,
 |
-CASSIUS:null:'Brutus' will start a spirit as soon as 'Caesar'.
+say:CAESAR:Sleek-headed men and such as sleep a-nights.
 |
-CASSIUS:null:Now in the names of all the gods at once,
+say:CAESAR:Yon Cassius has a lean and hungry look;
 |
-CASSIUS:null:Upon what meat doth this our Caesar feed
+say:CAESAR:He thinks too much. Such men are dangerous.
 |
-CASSIUS:null:That he is grown so great? Age, thou art shamed!
+say:ANTONY:Fear him not, Caesar, he's not dangerous;
 |
-CASSIUS:null:Rome, thou hast lost the breed of noble bloods!
+say:ANTONY:He is a noble Roman and well given.
 |
-CASSIUS:null:When went there by an age, since the great flood,
+say:CAESAR:Would he were fatter! But I fear him not;
 |
-CASSIUS:null:But it was famed with more than with one man?
+say:CAESAR:Yet if my name were liable to fear,
 |
-CASSIUS:null:When could they say, till now, that talked of Rome,
+say:CAESAR:I do not know the man I should avoid
 |
-CASSIUS:null:That her wide walls encompassed but one man?
+say:CAESAR:So soon as that spare Cassius. He reads much,
 |
-CASSIUS:null:Now is it Rome indeed, and room enough,
+say:CAESAR:He is a great observer, and he looks
 |
-CASSIUS:null:When there is in it but one only man.
+say:CAESAR:Quite through the deeds of men. He loves no plays.
 |
-CASSIUS:null:O, you and I have heard our fathers say
+say:CAESAR:As thou dost, Antony; he hears no music;
 |
-CASSIUS:null:There was a Brutus once that would have brooked
+say:CAESAR:Seldom he smiles, and smiles in such a sort
 |
-CASSIUS:null:Th'eternal devil to keep his state in Rome
+say:CAESAR:As if he mocked himself and scorned his spirit
 |
-CASSIUS:null:As easily as a king.
+say:CAESAR:That could be moved to smile at anything.
 |
-BRUTUS:null:That you do love me, I am nothing jealous.
+say:CAESAR:Such men as he be never at heart's ease
 |
-BRUTUS:null:What you would work me to, I have some aim.
+say:CAESAR:Whiles they behold a greater than themselves,
 |
-BRUTUS:null:How I have thought of this, and of these times,
+say:CAESAR:And therefore are they very dangerous.
 |
-BRUTUS:null:I shall recount hereafter.  For this present,
+say:CAESAR:I rather tell thee what is to be feared
 |
-BRUTUS:null:I would not —so with love I might entreat you  —
+say:CAESAR:Than what I fear; for always I am Caesar.
 |
-BRUTUS:null:Be any further moved. What you have said
+say:CAESAR:Come on my right hand, for this ear is deaf,
 |
-BRUTUS:null:I will consider; what you have to say
-|
-BRUTUS:null:I will with patience hear, and find a time
-|
-BRUTUS:null:Both meet to hear and answer such high things.
-|
-BRUTUS:null:Till then, my noble friend, chew upon this:null:
-|
-BRUTUS:null:Brutus had rather be a villager
-|
-BRUTUS:null:Than to repute himself a son of Rome
-|
-BRUTUS:null:Under these hard conditions as this time
-|
-BRUTUS:null:Is like to lay upon us.
-|
-CASSIUS:null:I am glad
-|
-CASSIUS:null:That my weak words have struck but thus much show
-|
-CASSIUS:null:Of fire from Brutus.
+say:CAESAR:And tell me truly what thou think'st of him.
 |
 *****
 |
-BRUTUS:null:The games are done and Caesar is returning.
+say:CASCA:You pull'd me by the cloak. Would you speak with me?
 |
-CASSIUS:null:As they pass by, pluck Casca by the sleeve,
+say:BRUTUS:Ay, Casca; tell us what hath chanced today,
 |
-CASSIUS:null:And he will, after his sour fashion, tell you
+say:BRUTUS:That Caesar looks so sad.
 |
-CASSIUS:null:What hath proceeded worthy note today.
+say:CASCA:Why, you were with him, were you not?
 |
-BRUTUS:null:I will do so. But, look you, Cassius,
+say:BRUTUS:I should not then ask Casca what had chanced.
 |
-BRUTUS:null:The angry spot doth glow on Caesar's brow,
+say:CASCA:Why, there was a crown offered him; and being
 |
-BRUTUS:null:And all the rest look like a chidden train.
+say:CASCA:offered him, he put it by with the back of his hand, thus;
 |
-BRUTUS:null:Calpurnia's cheek is pale, and Cicero
+say:CASCA:and then the people fell a-shouting.
 |
-BRUTUS:null:Looks with such ferret and such fiery eyes
+say:BRUTUS:What was the second noise for?
 |
-BRUTUS:null:As we have seen him in the Capitol,
+say:CASCA:Why, for that too.
 |
-BRUTUS:null:Being crossed in conference by some senators.
+say:CASSIUS:They shouted thrice. What was the last cry for?
 |
-CASSIUS:null:Casca will tell us what the matter is.
+say:CASCA:Why, for that too.
 |
-CAESAR:null:Antonius!
+say:BRUTUS:Was the crown offered him thrice?
 |
-ANTONY:null:Caesar?
+say:CASCA:Ay, marry, was't, and he put it by thrice, every time
 |
-CAESAR:null:[Privately to Antony] Let me have men about me that are fat,
+say:CASCA:gentler than other, and at every putting-by mine
 |
-CAESAR:null:Sleek-headed men and such as sleep a-nights.
+say:CASCA:honest neighbors shouted.
 |
-CAESAR:null:Yon Cassius has a lean and hungry look;
+say:CASSIUS:Who offered him the crown?
 |
-CAESAR:null:He thinks too much.  Such men are dangerous.
+say:CASCA:Why, Antony.
 |
-ANTONY:null:Fear him not, Caesar, he's not dangerous;
+say:BRUTUS:Tell us the manner of it, gentle Casca.
 |
-ANTONY:null:He is a noble Roman and well given.
+say:CASCA:I can as well be hanged as tell the manner of it. It was
 |
-CAESAR:null:Would he were fatter! But I fear him not;
+say:CASCA:mere foolery; I did not mark it. I saw Mark Antony offer
 |
-CAESAR:null:Yet if my name were liable to fear,
+say:CASCA:him a crown —yet 'twas not a crown neither, 'twas one
 |
-CAESAR:null:I do not know the man I should avoid
+say:CASCA:of these coronets — and, as I told you, he put it by once;
 |
-CAESAR:null:So soon as that spare Cassius. He reads much,
+say:CASCA:but for all that, to my thinking, he would fain have had
 |
-CAESAR:null:He is a great observer, and he looks
+say:CASCA:it. Then he offered it to him again; then he put it by again;
 |
-CAESAR:null:Quite through the deeds of men. He loves no plays.
+say:CASCA:but, to my thinking, he was very loath to lay his fingers
 |
-CAESAR:null:As thou dost, Antony; he hears no music;
+say:CASCA:off it. And then he offered it the third time; he put it the
 |
-CAESAR:null:Seldom he smiles, and smiles in such a sort
+say:CASCA:third time by; and still as he refused it, the rabblement
 |
-CAESAR:null:As if he mocked himself and scorned his spirit
+say:CASCA:hooted and clapped their chapped hands and threw up
 |
-CAESAR:null:That could be moved to smile at anything.
+say:CASCA:their sweaty nightcaps, and uttered such a deal of stink-
 |
-CAESAR:null:Such men as he be never at heart's ease
+say:CASCA:ing breath because Caesar refused the crown that it had
 |
-CAESAR:null:Whiles they behold a greater than themselves,
+say:CASCA:almost choked Caesar, for he swooned and fell down at it.
 |
-CAESAR:null:And therefore are they very dangerous.
+say:CASCA:And for mine own part, I durst not laugh, for fear of
 |
-CAESAR:null:I rather tell thee what is to be feared
+say:CASCA:opening my lips and receiving the bad air.
 |
-CAESAR:null:Than what I fear; for always I am Caesar.
+say:CASSIUS:But, soft, I pray you; what, did Caesar swoon?
 |
-CAESAR:null:Come on my right hand, for this ear is deaf,
+say:CASCA:He fell down in the market-place, and foamed at
 |
-CAESAR:null:And tell me truly what thou think'st of him.
+say:CASCA:mouth, and was speechless.
+|
+say:BRUTUS:'Tis very like; he hath the falling sickness.
+|
+say:CASSIUS:No, Caesar hath it not; but you and I,
+|
+say:CASSIUS:And honest Casca, we have the falling sickness.
+|
+say:CASCA:I know not what you mean by that, but I am sure
+|
+say:CASCA:Caesar fell down. If the tag-rag people did not clap him
+|
+say:CASCA:and hiss him, according as he pleased and displeased
+|
+say:CASCA:them, as they use to do the players in the theatre, I am
+|
+say:CASCA:no true man.
+|
+say:BRUTUS:What said he when he came unto himself?
+|
+say:CASCA:Marry, before he fell down, when he perceived the
+|
+say:CASCA:common herd was glad he refused the crown, he plucked,
+|
+say:CASCA:me, ope his doublet and offered them his throat to cut. An
+|
+say:CASCA:I had been a man of any occupation, if I would not have
+|
+say:CASCA:taken him at a word, I would I might go to hell among the
+|
+say:CASCA:rogues. And so he fell. When he came to himself again, he
+|
+say:CASCA:said, if he had done or said anything amiss, he desired
+|
+say:CASCA:their worships to think it was his infirmity. Three or four
+|
+say:CASCA:wenches, where I stood, cried 'Alas, good soul!' and for-
+|
+say:CASCA:gave him with all their hearts. But there's no heed to be
+|
+say:CASCA:taken of them; if Caesar had stabbed their mothers, they
+|
+say:CASCA:would have done no less.
+|
+say:BRUTUS:And after that he came thus sad away?
+|
+say:CASCA:Ay.
+|
+say:CASSIUS:Did Cicero say anything?
+|
+say:CASCA:Ay, he spoke Greek.
+|
+say:CASSIUS:To what effect?
+|
+say:CASCA:Nay, an I tell you that, I’ll ne'er look you i' th’ face
+|
+say:CASCA:again. But those that understood him smiled at one
+|
+say:CASCA:another and shook their heads; but, for mine own part, it
+|
+say:CASCA:was Greek to me. I could tell you more news too: Marullus
+|
+say:CASCA:and Flavius, for pulling scarfs off Caesar's images, are
+|
+say:CASCA:put to silence. Fare you well. There was more foolery yet, if I
+|
+say:CASCA:could remember it.
+|
+say:CASSIUS:Will you sup with me tonight, Casca?
+|
+say:CASCA:No, I am promised forth.
+|
+say:CASSIUS:Will you dine with me tomorrow?
+|
+say:CASCA:Ay, if I be alive, and your mind hold, and your dinner
+|
+say:CASCA:worth the eating.
+|
+say:CASSIUS:Good, I will expect you.
+|
+say:CASCA:Do so. Farewell both.
 |
 *****
 |
-CASCA:null:You pull'd me by the cloak.  Would you speak with me?
+say:BRUTUS:What a blunt fellow is this grown to be!
 |
-BRUTUS:null:Ay, Casca; tell us what hath chanced today,
+say:BRUTUS:He was quick mettle when he went to school.
 |
-BRUTUS:null:That Caesar looks so sad.
+say:CASSIUS:So is he now in execution
 |
-CASCA:null:Why, you were with him, were you not?
+say:CASSIUS:Of any bold or noble enterprise,
 |
-BRUTUS:null:I should not then ask Casca what had chanced.
+say:CASSIUS:However he puts on this tardy form.
 |
-CASCA:null:Why, there was a crown offered him; and being
+say:CASSIUS:This rudeness is a sauce to his good wit,
 |
-CASCA:null:offered him, he put it by with the back of his hand, thus;
+say:CASSIUS:Which gives men stomach to digest his words
 |
-CASCA:null:and then the people fell a-shouting.
+say:CASSIUS:With better appetite.
 |
-BRUTUS:null:What was the second noise for?
+say:BRUTUS:And so it is. For this time I will leave you.
 |
-CASCA:null:Why, for that too.
+say:BRUTUS:Tomorrow, if you please to speak with me,
 |
-CASSIUS:null:They shouted thrice.  What was the last cry for?
+say:BRUTUS:I will come home to you; or, if you will,
 |
-CASCA:null:Why, for that too.
+say:BRUTUS:Come home to me, and I will wait for you.
 |
-BRUTUS:null:Was the crown offered him thrice?
-|
-CASCA:null:Ay, marry, was't, and he put it by thrice, every time
-|
-CASCA:null:gentler than other, and at every putting-by mine
-|
-CASCA:null:honest neighbors shouted.
-|
-CASSIUS:null:Who offered him the crown?
-|
-CASCA:null:Why, Antony.
-|
-BRUTUS:null:Tell us the manner of it, gentle Casca.
-|
-CASCA:null:I can as well be hanged as tell the manner of it.  It was
-|
-CASCA:null:mere foolery; I did not mark it. I saw Mark Antony offer
-|
-CASCA:null:him a crown —yet 'twas not a crown neither, 'twas one
-|
-CASCA:null:of these coronets  — and, as I told you, he put it by once;
-|
-CASCA:null:but for all that, to my thinking, he would fain have had
-|
-CASCA:null:it. Then he offered it to him again; then he put it by again;
-|
-CASCA:null:but, to my thinking, he was very loath to lay his fingers
-|
-CASCA:null:off it. And then he offered it the third time; he put it the
-|
-CASCA:null:third time by; and still as he refused it, the rabblement
-|
-CASCA:null:hooted and clapped their chapped hands and threw up
-|
-CASCA:null:their sweaty nightcaps, and uttered such a deal of stink-
-|
-CASCA:null:ing breath because Caesar refused the crown that it had
-|
-CASCA:null:almost choked Caesar, for he swooned and fell down at it.
-|
-CASCA:null:And for mine own part, I durst not laugh, for fear of
-|
-CASCA:null:opening my lips and receiving the bad air.
-|
-CASSIUS:null:But, soft, I pray you; what, did Caesar swoon?
-|
-CASCA:null:He fell down in the market-place, and foamed at
-|
-CASCA:null:mouth, and was speechless.
-|
-BRUTUS:null:'Tis very like; he hath the falling sickness.
-|
-CASSIUS:null:No, Caesar hath it not; but you and I,
-|
-CASSIUS:null:And honest Casca, we have the falling sickness.
-|
-CASCA:null:I know not what you mean by that, but I am sure
-|
-CASCA:null:Caesar fell down. If the tag-rag people did not clap him
-|
-CASCA:null:and hiss him, according as he pleased and displeased
-|
-CASCA:null:them, as they use to do the players in the theatre, I am
-|
-CASCA:null:no true man.
-|
-BRUTUS:null:What said he when he came unto himself?
-|
-CASCA:null:Marry, before he fell down, when he perceived the
-|
-CASCA:null:common herd was glad he refused the crown, he plucked,
-|
-CASCA:null:me, ope his doublet and offered them his throat to cut. An
-|
-CASCA:null:I had been a man of any occupation, if I would not have
-|
-CASCA:null:taken him at a word, I would I might go to hell among the
-|
-CASCA:null:rogues. And so he fell. When he came to himself again, he
-|
-CASCA:null:said, if he had done or said anything amiss, he desired
-|
-CASCA:null:their worships to think it was his infirmity. Three or four
-|
-CASCA:null:wenches, where I stood, cried 'Alas, good soul!' and for-
-|
-CASCA:null:gave him with all their hearts.  But there's no heed to be
-|
-CASCA:null:taken of them; if Caesar had stabbed their mothers, they
-|
-CASCA:null:would have done no less.
-|
-BRUTUS:null:And after that he came thus sad away?
-|
-CASCA:null:Ay.
-|
-CASSIUS:null:Did Cicero say anything?
-|
-CASCA:null:Ay, he spoke Greek.
-|
-CASSIUS:null:To what effect?
-|
-CASCA:null:Nay, an I tell you that, I’ll ne'er look you i' th’ face
-|
-CASCA:null:again.  But those that understood him smiled at one
-|
-CASCA:null:another and shook their heads; but, for mine own part, it
-|
-CASCA:null:was Greek to me. I could tell you more news too:null: Marullus
-|
-CASCA:null:and Flavius, for pulling scarfs off Caesar's images, are
-|
-CASCA:null:put to silence. Fare you well. There was more foolery yet, if I
-|
-CASCA:null:could remember it.
-|
-CASSIUS:null:Will you sup with me tonight, Casca?
-|
-CASCA:null:No, I am promised forth.
-|
-CASSIUS:null:Will you dine with me tomorrow?
-|
-CASCA:null:Ay, if I be alive, and your mind hold, and your dinner
-|
-CASCA:null:worth the eating.
-|
-CASSIUS:null:Good, I will expect you.
-|
-CASCA:null:Do so. Farewell both.
-|
-*****
-|
-BRUTUS:null:What a blunt fellow is this grown to be!
-|
-BRUTUS:null:He was quick mettle when he went to school.
-|
-CASSIUS:null:So is he now in execution
-|
-CASSIUS:null:Of any bold or noble enterprise,
-|
-CASSIUS:null:However he puts on this tardy form.
-|
-CASSIUS:null:This rudeness is a sauce to his good wit,
-|
-CASSIUS:null:Which gives men stomach to digest his words
-|
-CASSIUS:null:With better appetite.
-|
-BRUTUS:null:And so it is. For this time I will leave you.
-|
-BRUTUS:null:Tomorrow, if you please to speak with me,
-|
-BRUTUS:null:I will come home to you; or, if you will,
-|
-BRUTUS:null:Come home to me, and I will wait for you.
-|
-CASSIUS:null:I will do so.  Till then, think of the world.
+say:CASSIUS:I will do so. Till then, think of the world.

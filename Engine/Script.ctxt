@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Script
+comment1.params=g\ all\ names
+comment1.target=Script(Game,\ java.lang.String[],\ java.util.HashMap)
+comment2.params=g\ all\ names
+comment2.target=Script(Game,\ java.lang.String,\ java.util.HashMap)
+comment3.params=
+comment3.target=void\ enter()
+comment4.params=
+comment4.target=void\ next()
+comment5.params=
+comment5.target=void\ load()
+comment6.params=b
+comment6.target=void\ setBlock(int)
+comment7.params=
+comment7.target=boolean\ isFinishedTyping()
+comment8.params=
+comment8.target=boolean\ isFullyOver()
+numComments=9

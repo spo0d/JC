@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Button
+comment1.params=x\ y\ width\ height\ m\ g
+comment1.target=Button(int,\ int,\ int,\ int,\ Mouse,\ Game)
+comment2.params=normal\ hover\ x\ y\ width\ height\ m\ g
+comment2.target=Button(java.awt.image.BufferedImage,\ java.awt.image.BufferedImage,\ int,\ int,\ int,\ int,\ Mouse,\ Game)
+comment3.params=normal\ x\ y\ width\ height\ m\ g
+comment3.target=Button(java.awt.image.BufferedImage,\ int,\ int,\ int,\ int,\ Mouse,\ Game)
+comment4.params=
+comment4.target=boolean\ isPressed()
+comment5.params=
+comment5.target=void\ update()
+comment6.params=g2
+comment6.target=void\ draw(java.awt.Graphics2D)
+numComments=7
