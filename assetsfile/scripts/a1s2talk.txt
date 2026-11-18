@@ -427,7 +427,11 @@ say:BRUTUS:Being crossed in conference by some senators.
 |
 say:CASSIUS:Casca will tell us what the matter is.
 |
+*****
+|
 say:CAESAR:Antonius!
+|
+move:ANTONY:534,390
 |
 say:ANTONY:Caesar?
 |

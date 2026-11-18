@@ -2,7 +2,7 @@ package Worlds;
 
 import Engine.*;
 import Entities.*;
-import Assets.AGeneral;
+import Assets.APauseScreen;
 //
 import java.awt.*;
 import java.awt.image.*;
@@ -13,7 +13,7 @@ public class PauseScreen implements World{
     ArrayList<Entity> entities= new ArrayList<>();
     Game g;
     Mouse m;
-    AGeneral ageneral;
+    APauseScreen ageneral;
     Engine.Button save;
     Engine.Button load;
     //Engine.Button ss;
@@ -25,13 +25,15 @@ public class PauseScreen implements World{
     private static Font caesar = Engine.Game.caesarDressingLoad();
 
     //
-    private static final String SLOT = "saves/slot1.json";
     private String msg = "";
     private long msgUntil;
+    private static final String userHome = System.getProperty("user.home") +  "/.jcrpg";
+    
+    private static final String SLOT = userHome + "/saves/slot1.json";
     public PauseScreen(Game g,Mouse m){
         this.g=g;
         this.m=m;
-        ageneral = new AGeneral();
+        ageneral = new APauseScreen();
 
         ee = ageneral.pauseScroll[4];
         ee2 = ageneral.pauseScroll[5];

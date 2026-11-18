@@ -4,6 +4,7 @@ public class PlayerData{
     public String name;
     public int x;
     public int y;
+    public int[] hlcolor;
     public boolean lor;
     public short sitLevel;
     public int wallL;

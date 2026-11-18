@@ -10,6 +10,7 @@ public class NPC extends Entity{
     public boolean opaToggle;
     private Player player;
     int i = 0;
+    double a;
     public NPC(String name, int x,int y, BufferedImage spritestand[], BufferedImage spritemove[],int colour[]){
         //this.player=player;
         this.hlcolour=new Color(colour[0], colour[1], colour[2]);
@@ -21,68 +22,75 @@ public class NPC extends Entity{
         this.spritestand=spritestand;
         this.spritemove = spritemove;
         sprite=spritestand[0];
+        offSet = Entity.sSinBobGen();
     }
+
     @Override
     public void update(){
+        stretch=1-stretchMax*Math.sin(offSet+a)*Math.sin(offSet+a);
+        a+=0.025;
         if(lor!=lorAfter)lor=lorAfter;
         i=(i+1)%84;
         if(follow){
-             int distance=player.x-this.x;
-             if(distance>this.sizex-100){
+            int distance=player.x-this.x;
+            if(distance>this.sizex-100){
                 moveTo(player.x-(this.sizex-100),player.y);
-             }
-             else if(distance<-1*(this.sizex-100)){
-                   moveTo(player.x+(this.sizex-100),player.y);
-             }
-             // if(Math.abs(distance)>Game.screenWidth()&&npcmove){
-                 // npcmove=false;
-                 // this.x=player.x - (int)Math.signum(distance)*(player.sizex+10);
-             // }
-             
+            }
+            else if(distance<-1*(this.sizex-100)){
+                moveTo(player.x+(this.sizex-100),player.y);
+            }
+            // if(Math.abs(distance)>Game.screenWidth()&&npcmove){
+            // npcmove=false;
+            // this.x=player.x - (int)Math.signum(distance)*(player.sizex+10);
+            // }
+
         }
         if(npcmove){
-               if(Math.abs(targetX-x)>speed){
-                   if(targetX>x){
-                       if(!lor)lor=true;
-                        x = x+speed;
-                        sprite=spritemove[i/21];
-                   }
-                   else if(targetX<x){
-                        if(lor)lor=false;
-                        x = x-speed;
-                        sprite=spritemove[i/21];
-                   }
-               }
-               else{
-                   x=targetX;
-                   xdone=true;
-               }
-               if(Math.abs(targetY-y)>speed){
-                   if(targetY>y){
-                        y = y+speed;
-                        sprite=spritemove[i/21];
-                   }
-                   else if(targetY<y){
-                        y = y-speed;
-                        sprite=spritemove[i/21];
-                   }
-               }
-               else{
-                   y=targetY;
-                   ydone=true;
-               }
-               if(xdone&&ydone){
-                   sprite=spritestand[0];
-                   npcmove=false;
-                   xdone=false;
-                   ydone=false;
-               }
+            stretch=1;
+            if(Math.abs(targetX-x)>speed){
+                if(targetX>x){
+                    if(!lor)lor=true;
+                    x = x+speed;
+                    sprite=spritemove[i/21];
+                }
+                else if(targetX<x){
+                    if(lor)lor=false;
+                    x = x-speed;
+                    sprite=spritemove[i/21];
+                }
+            }
+            else{
+                x=targetX;
+                xdone=true;
+            }
+            if(Math.abs(targetY-y)>speed){
+                if(targetY>y){
+                    y = y+speed;
+                    sprite=spritemove[i/21];
+                }
+                else if(targetY<y){
+                    y = y-speed;
+                    sprite=spritemove[i/21];
+                }
+            }
+            else{
+                y=targetY;
+                ydone=true;
+            }
+            if(xdone&&ydone){
+                sprite=spritestand[0];
+                npcmove=false;
+                xdone=false;
+                ydone=false;
+            }
         }           
     }
+
     public void follow(Player p, boolean b){
         follow = b;
         player = p;
     }
+
     public boolean touchRange(Entity e){
         if(Math.abs(e.x-this.x)<=e.sizex  && Math.abs(e.y-this.y)<=e.sizey)return true;
         return false;

@@ -1,9 +1,9 @@
 {
   "saveVersion": 1,
-  "scene": 11,
+  "scene": 12,
   "player": {
-    "name": "Flavius",
-    "x": 200,
+    "name": "Marcus Brutus",
+    "x": 563,
     "y": 390,
     "lor": true,
     "sitLevel": -1,
@@ -12,7 +12,83 @@
   },
   "worldData": {
     "stage": 0,
-    "extra": {}
+    "scriptBlock": 0,
+    "lineSayNo": 0,
+    "extra": {
+      "elock": 1,
+      "screenColor": 16,
+      "start": 1,
+      "entercount": 2,
+      "cameraY": -720,
+      "cassiusOnly": 11
+    }
   },
-  "npcs": []
+  "npcs": [
+    {
+      "name": "Soothsayer",
+      "x": 50,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Julius Caesar",
+      "x": 731,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Calpurnia",
+      "x": 288,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Mark Antony",
+      "x": 910,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Cassius",
+      "x": 409,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Casca",
+      "x": 480,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Cicero",
+      "x": 163,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Portia",
+      "x": 228,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Decius Brutus",
+      "x": 108,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Flavius",
+      "x": -60,
+      "y": 390,
+      "lor": true
+    },
+    {
+      "name": "Murellus",
+      "x": -10,
+      "y": 390,
+      "lor": true
+    }
+  ]
 }

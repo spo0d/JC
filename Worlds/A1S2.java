@@ -15,7 +15,7 @@ import java.util.*;
 public class A1S2 implements World{
 
     //IMP FOLLOW THIS
-    static final int INTRO = 0, TOUCH = 1, BUCASp1 = 2, BUCASp2 = 3; int stage = INTRO;
+    static final int INTRO = -1, TOUCH = 0, BUCASp1 = 1, BUCASp2 = 2, DONE = 3; int stage = INTRO;
     Input in;
     Mouse mouse;
     Game g;
@@ -49,6 +49,9 @@ public class A1S2 implements World{
 
     int whiteBang = 0;
     Script script;
+
+    public boolean allNPCMove;
+    private boolean soothSayerStuff;
     public A1S2(Mouse mousedummy,Input keyboarddummy,Game gdummy, Player player){
 
         in = keyboarddummy;
@@ -66,6 +69,7 @@ public class A1S2 implements World{
         player.setWall(0,2710);
         aa1s2 = new AA1S2();
         player.setChara("Marcus Brutus", 563,390,aa1s2.spritestand,aa1s2.spritemove,new int[]{70, 130, 180});
+        player.lorAfter=true;
         entities = new ArrayList<>();
         entities.add(new NPC("Soothsayer", 50,390,aa1s2.spritestand,aa1s2.spritemove,new int[]{138, 43, 226}));
         entities.add(new NPC("Julius Caesar", 731,390,aa1s2.spritestand,aa1s2.spritemove,new int[]{226, 88, 62}));
@@ -95,6 +99,7 @@ public class A1S2 implements World{
         names.put("BRUTUS", player);
         names.put("player", player);
         entities.get(1).speed=2;
+        script = new Script(g,aa1s2.DialogueArr,names); 
         enterStage(INTRO);
     }
 
@@ -118,13 +123,21 @@ public class A1S2 implements World{
     @Override
     public void update(){
         //general dialogue stuff
+        allNPCMove=false;
+        for(Entity e: entities){
+            if(e.npcmove){
+                allNPCMove=true;
+                break;
+            }
+        }
         if(g.interactPressed&&(elock||!start)&& player.sitLevel>=-1){
-            if(elock){
+            if(elock && !allNPCMove){
                 if(!(script.block==2&&screenColor<512)){
                     script.enter();
                 }
                 if(script.isFullyOver()&&script.block==1){
                     names.get("SOOTHSAYER").hlcolour= new Color(138, 43, 226);
+                    soothSayerStuff=true;
                 }
             }
             else if(!start){
@@ -135,12 +148,14 @@ public class A1S2 implements World{
                     start = true;
                     g.dialogues.clear();
                     script.next();
+                    stage=TOUCH;
                     elock=true;
                 }
                 if(entercount<2)entercount++;
             }
         }
         if(script.block<2){
+            if(stage>=TOUCH&&stage!=script.block)stage=script.block;
             if(script.block==1&&script.sceneOver)script.load();
             if((start&&screenColor<=360))screenColor++;
             if(start && screenColor>180 && screenColor<=360){
@@ -163,14 +178,35 @@ public class A1S2 implements World{
             if(screenColor==256){
                 entities.clear();
                 names.clear();
+                player.setWall(0,g.widthx);
                 entities.add(new NPC("Cassius", 409,player.y,aa1s2.spritestand,aa1s2.spritemove,new int[]{46, 139, 87}));
+                // // player.setColor();
                 names.put("CASSIUS", entities.get(0));
+                names.put("BRUTUS",player);
+                names.put("player",player);
                 player.x=534;
                 player.lorAfter=false;
             }
         }
-        else if(script.block>2){
+        else if(6>script.block && script.block>2){
             if(script.sceneOver)script.load();
+        }
+        else if(script.block==6&&whiteBang==0){
+                entities.clear();
+                //aa1s2.bgmain=;
+                names.clear();            
+                entities.add(new NPC("Julius Caesar", 1,390,aa1s2.spritestand,aa1s2.spritemove,new int[]{226, 88, 62}));
+                player.x=700;
+                player.lorAfter=false;
+                player.sitLevel=-1;
+                names.put("CAESAR",entities.get(0));
+                entities.get(0).lorAfter=false;
+                entities.get(0).x=502;
+                names.put("player",player);
+                player.name="Antony";
+                names.put("ANTONY",player);
+                script.load();
+                whiteBang++;
         }
 
         player.update();
@@ -181,24 +217,19 @@ public class A1S2 implements World{
 
     void enterStage(int d){
         stage = d;
-        NPC cobbler   = (NPC)entities.get(0);
-        NPC carpenter = (NPC)entities.get(1);
-        NPC muru = (NPC)entities.get(2);
         switch(d){
             case INTRO:
-        
+
                 String intro = "A trumpet sounds. CAESAR, ANTONY (who is dressed for a traditional foot race), CALPHURNIA, PORTIA, DECIUS, CICERO, BRUTUS, CASSIUS, and CASCA enter, followed by great crowd of commoners, including a SOOTHSAYER. MURELLUS and FLAVIUS follow after them.";
                 introDialogue =new Dialogue(50, 250, g.widthx-100,"say", "Narrator", intro);
-                g.dialogues.add(introDialogue);
-
-                script = new Script(g,aa1s2.DialogueArr,names);    
+                g.dialogues.add(introDialogue);   
                 player.sitLevel=-1;
+                screenColor=1;
                 break;
             case TOUCH:
-                script.block=1;
-                screenColor=0;
                 break;
             case BUCASp1:
+
                 break;
             case BUCASp2:
                 break;
@@ -212,15 +243,54 @@ public class A1S2 implements World{
     }
 
     @Override
-    public SaveLoad.WorldData saveWorld(){
+    public SaveLoad.WorldData saveWorld() {
         SaveLoad.WorldData d = new SaveLoad.WorldData();
+
+        // These are separate values in your current design.
         d.stage = stage;
+
+        d.scriptBlock= script.block;
+        d.extra.put("start", start ? 1 : 0);
+        d.extra.put("elock", elock ? 1 : 0);
+        d.extra.put("screenColor", screenColor);
+        d.extra.put("entercount", entercount);
+        d.extra.put("cameraY", g.camera.cameray);
+        d.extra.put("cassiusOnly", entities.size());
+        d.extra.put("soothSayerStuff", (soothSayerStuff)?1:0);
+        d.extra.put("wb", whiteBang);
+        d.lineSayNo=script.lineSayNo;
         return d;
     }
 
     @Override
     public void loadWorld(SaveLoad.WorldData d){
-        
+
+        int s = d.stage;
+        g.dialogues.clear(); 
+        start = d.extra.getOrDefault("start", 0) == 1;
+        elock = d.extra.getOrDefault("elock", 0) == 1;
+        screenColor = d.extra.getOrDefault("screenColor", 1);
+        entercount = d.extra.getOrDefault("entercount",0);
+        g.camera.cameray =
+        d.extra.getOrDefault("cameraY", -g.heighty);
+        soothSayerStuff = d.extra.get("soothSayerStuff")==1;
+        whiteBang=d.extra.getOrDefault("wb",0);
+        if(soothSayerStuff){
+            names.get("SOOTHSAYER").hlcolour= new Color(138, 43, 226);
+        }
+        if(d.extra.get("cassiusOnly")==1){
+            entities.clear();
+            names.clear();
+            entities.add(new NPC("Cassius", 67,player.y,aa1s2.spritestand,aa1s2.spritemove,new int[]{46, 139, 87}));
+
+            names.put("CASSIUS", entities.get(0));
+        }
+        enterStage(s);
+    }
+
+    @Override
+    public Script getScript(){
+        return this.script;
     }
 
     @Override

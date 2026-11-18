@@ -45,6 +45,7 @@ public class SaveManager{
         SaveData d = new SaveData();
         d.scene = g.currentWorld.getSceneID();
         d.player = SaveConverter.getPlayerData(g.player);
+        d.npcs = SaveConverter.getNPCData(g.currentWorld.getEntities());
         d.worldData=w;
         try{
             save(d,path);
@@ -67,8 +68,15 @@ public class SaveManager{
         if(d==null||d.player==null||d.worldData==null) return false;
         g.setActScene(d.scene);
         if(g.currentWorld.getSceneID()!=d.scene)return false;
-        SaveConverter.applyPlayerData(g.player,d.player);
         g.currentWorld.loadWorld(d.worldData);
+        
+        SaveConverter.applyPlayerData(g.player,d.player);
+        SaveConverter.applyNPCData(g.currentWorld.getEntities(),d.npcs);
+        
+        if(d.worldData.stage!=-1){
+            g.currentWorld.getScript().setBlock(d.worldData.scriptBlock);
+            g.currentWorld.getScript().setLine(d.worldData.lineSayNo);
+        }
         return true;
     }
 }

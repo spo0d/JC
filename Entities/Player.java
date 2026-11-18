@@ -18,6 +18,9 @@ public class Player extends Entity{
     public short sitLevel=0;
     int maxXL;
     int maxXR;
+    
+    //bob
+    double a;
     public Player(Input input,Mouse mouse){
         this.name="Flavius";
         this.input=input;
@@ -33,9 +36,12 @@ public class Player extends Entity{
         aa1s1 = new AA1S1();
         spritestand=aa1s1.spritestand;
         spritemove = aa1s1.spritemove;
+        offSet = Entity.sSinBobGen();
     }
     @Override
     public void update(){
+        stretch=1-stretchMax*Math.sin(offSet+a)*Math.sin(offSet+a);
+        a+=0.025;
         //always set to stand cause if nothn i.e idle then spritestand
         sprite=spritestand[0];
         
@@ -56,6 +62,7 @@ public class Player extends Entity{
                 x-=speed;
                 sprite=spritemove[i/21];
                 lastPressed="A";
+                stretch=1;
                 lorAfter=false;
             }
             //D
@@ -63,6 +70,7 @@ public class Player extends Entity{
                 x+=speed;
                 sprite=spritemove[i/21];
                 lastPressed="D";
+                stretch=1;
                 lorAfter=true;
             }
         }
@@ -177,6 +185,9 @@ public class Player extends Entity{
     public void setWall(int x1,int x2){
         maxXL=x1;
         maxXR=x2-100;;
+    }
+    public void setColor(int[] color){
+        hlcolour=new Color(color[0],color[1],color[2]);
     }
     public void setChara(String name, int x,int y, BufferedImage spritestand[], BufferedImage spritemove[],int colour[]){
         this.name=name;

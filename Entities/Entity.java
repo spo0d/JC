@@ -50,6 +50,10 @@ public class Entity {
     protected boolean walk=false;
     public final static Font caesarDressingFont = caesarDressingLoad();
     private FontMetrics fm = (new Canvas()).getFontMetrics(caesarDressingFont);
+    
+    public final double stretchMax = 0.025;
+    public double stretch=1;
+    public double offSet;
     public static Font caesarDressingLoad(){
         try{
             Font dummyFont = Font.createFont(Font.TRUETYPE_FONT, Entity.class.getResourceAsStream("/assetsfile/fonts/CaesarDressing-Regular.ttf"));
@@ -60,8 +64,9 @@ public class Entity {
         }
     }
     public void draw(Graphics2D g2) { 
-        if(lor)g2.drawImage(sprite, x, y,sizex,sizey, null);
-        else g2.drawImage(sprite, x+sizex, y,-1*sizex,sizey, null);
+        int currentHeight = (int)(sizey*stretch);
+        if(lor)g2.drawImage(sprite, x, y-currentHeight+sizey,sizex,currentHeight, null);
+        else g2.drawImage(sprite, x+sizex, y-currentHeight+sizey,-1*sizex,currentHeight, null);
         //
         
         if(!(this instanceof Entities.Objects)   )        {
@@ -84,7 +89,9 @@ public class Entity {
     }
     public void update() {
     }
-    
+    public static double sSinBobGen(){
+        return 2*Math.PI*Math.random();
+    }
     public void moveTo(int targetX, int targetY,int speed){
         this.targetX = targetX;
         this.targetY = targetY;

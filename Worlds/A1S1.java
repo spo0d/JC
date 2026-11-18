@@ -13,7 +13,7 @@ import java.util.*;
 
 public class A1S1 implements World{
     //IMP FOLLOW THIS
-    static final int INTRO = 0, ROAM = 1, CUTSCENE = 2, DONE = 3; int stage = INTRO;
+    static final int INTRO = -1, ROAM = 0, CUTSCENE = 1, DONE = 2; int stage = INTRO;
 
     Input in;
     Mouse mouse;
@@ -212,6 +212,7 @@ public class A1S1 implements World{
                 carpenter.opaToggle = false;
                 player.setWall(cobbler.x - 600, 2710);   // can't walk back left
                 g.audio.stopBGSong();
+                endShiny=null;
                 break;
             case DONE:
                 start = true;  elock = true;
@@ -232,18 +233,24 @@ public class A1S1 implements World{
     public SaveLoad.WorldData saveWorld(){
         SaveLoad.WorldData d = new SaveLoad.WorldData();
         d.stage = stage;
+        d.extra.put("elock",elock?1:0);
         return d;
     }
     @Override
     public void loadWorld(SaveLoad.WorldData d){
         int s = d.stage;
         if(s==CUTSCENE) s=ROAM;
-        
         g.dialogues.clear(); 
         enterStage(s);      
+        elock = d.extra.getOrDefault("elock",0)==1;
         Entity muru = entities.get(2);
-        muru.x=player.x-200;
+        // muru.x=player.x-200;
         muru.y = 390;
+    }
+    
+    @Override
+    public Script getScript(){
+        return this.script;
     }
     @Override
     public ArrayList<Entity> getEntities(){
